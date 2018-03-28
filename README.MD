@@ -11,7 +11,7 @@ You need Node, NPM and MongoDB properly installed.
 
 Clone this repository
 ``` shell
-    git clone https://github.com/brenohq/nodejs-shopping-cart.git
+    git clone https://github.com/swnoh/Bbang.git
 ```
 Setup the environment variables replacing <MONGODB-PORT> with your mongodb port, usually is 27017.
 ``` shell
@@ -40,4 +40,4 @@ This will start dev server at http://localhost:3000 with Nodemon.
 ###### Back-end
 NodeJS, Express, MongoDB, Mongoose. 
 ###### Fron-end
-Handlebars and Bootstrap.
+Handlebars and Bootstrap (React will be applied.)
