@@ -40,4 +40,4 @@ This will start dev server at http://localhost:3000 with Nodemon.
 ###### Back-end
 NodeJS, Express, MongoDB, Mongoose. 
 ###### Fron-end
-Handlebars and Bootstrap.
+Handlebars and Bootstrap (React will be applied.)
