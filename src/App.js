@@ -7,6 +7,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Landing Page</h1>
+        <button>This is a basic button</button>
+        <button className="btn btn-primary">This is a bootstrap button</button>
       </div>
     );
   }
