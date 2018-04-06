@@ -7,9 +7,7 @@ class Header extends Component {
   };
   render() {
     return <header>
-        <h2>
-          <a>Miruku</a>
-        </h2>
+        <h2>ミルク MIRUKU</h2>
         <nav>
           <li>
             <a onClick={this.props.onCart} id="cart">

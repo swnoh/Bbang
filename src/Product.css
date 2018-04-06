@@ -1,0 +1,40 @@
+.product{
+    display: flex;
+    justify-content: flex-start;
+    height: 90vh;
+    position: relative;
+    flex-wrap: wrap;
+    background-color: #FFFAFA;
+}
+
+#sideBar_container {
+    display: flex;
+    height: 90vh;
+    width: 198px;
+    align-items: center;
+    margin-left: 15vw;
+    
+}
+
+#swiper_container{
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 15vw;
+    left: 30%;
+}
+
+.swiper-container {
+    width: 30vw;
+    height: 500px;
+}
+
+#swiperImg {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-width: 50%;
+    height: 60%;
+    border-radius: 50px;
+}

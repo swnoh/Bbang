@@ -20,13 +20,3 @@ class CartItem extends Component {
 }
 
 export default CartItem;
-
-
-
-    //  <li class="clearfix">
-    //    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
-    //    <span class="item-name">Sony DSC-RX100M III</span>
-    //    <span class="item-price">$849.99</span>
-    //    <span class="item-quantity">Quantity: 01</span>
-    //  </li>;
-

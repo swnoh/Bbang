@@ -1,0 +1,16 @@
+/* .sideBar{
+    display: flex;
+    max-width: 300px;
+    padding-left: 30px;
+    height: 95vh;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 30px;
+} */
+
+/* Fixed sidenav, full height */
+.sideBar {
+  width: 200px;
+  z-index: 1;
+  overflow-x: hidden;
+}
