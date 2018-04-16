@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header';
-import Cart from './Cart';
+import Header from './components/Header';
+import Cart from './components/Cart';
 
-import Product from './Product';
+import Product from './components/Product';
 
 class App extends Component {
   constructor(props){
