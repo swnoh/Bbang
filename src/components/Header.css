@@ -1,5 +1,7 @@
 header{
     background-color: #FFFAFA;
+    /* background-color: #FFEFD5; */
+
     display: flex !important;
     justify-content: space-between;
     align-items:center;

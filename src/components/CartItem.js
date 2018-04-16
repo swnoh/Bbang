@@ -7,7 +7,7 @@ class CartItem extends Component {
     return (
       <div>
         <ul className="shopping-cart-items">
-          <li className="clearfix">
+          <li>
             <img src={imagePath} alt={title} />
             <span className="item-name">{title}</span>
             <span className="item-price">{price}</span>

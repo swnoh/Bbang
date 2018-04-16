@@ -9,9 +9,24 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 class SideBar extends Component {
-
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e){
+    e.preventDefault();
+    console.log("Hello");
+  }
   render() {
-    return <div className="sideBar">
+    // const css = {
+    //   paddingLeft: "45px",
+    //   paddingTop: "10px",
+    //   paddingBottom: "10px",
+    //   display: "block",
+    //   animation: "fadein 1.0s ease-in"
+    // };
+    return (
+      <div className="sideBar">
         <Accordion>
           <AccordionItem>
             <AccordionItemTitle>
@@ -23,27 +38,11 @@ class SideBar extends Component {
             <AccordionItemTitle>
               <h3>MENU</h3>
             </AccordionItemTitle>
-            <AccordionItemBody>
-              <p>Sweet Bento</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Milk Tea Bottle</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Cube Cube</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Bon Bon</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Quichi</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Scone</p>
-            </AccordionItemBody>
-            <AccordionItemBody>
-              <p>Whole Cake</p>
-            </AccordionItemBody>
+            {this.props.products.map((r, index) => (
+              <AccordionItemBody>
+                <p key={index} onClick={this.handleClick}>{r.title}</p>
+              </AccordionItemBody>
+            ))}
           </AccordionItem>
 
           <AccordionItem>
@@ -52,7 +51,8 @@ class SideBar extends Component {
             </AccordionItemTitle>
           </AccordionItem>
         </Accordion>
-      </div>;
+      </div>
+    );
   }
 }
 

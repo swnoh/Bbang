@@ -10,8 +10,9 @@
 #sideBar_container {
     display: flex;
     height: 90vh;
-    width: 198px;
+    width: 238px;
     align-items: center;
+    padding-bottom: 10vh;
     margin-left: 15vw;
     
 }
@@ -21,20 +22,22 @@
     height: 90vh;
     align-items: center;
     justify-content: space-around;
-    padding-left: 15vw;
+    padding-left: 13vw;
+    padding-bottom: 15vh;
     left: 30%;
 }
 
 .swiper-container {
-    width: 30vw;
+    width: 35vw;
     height: 500px;
 }
+
 
 #swiperImg {
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
     min-width: 50%;
-    height: 60%;
+    height: 450px;
     border-radius: 50px;
 }

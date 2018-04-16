@@ -15,8 +15,8 @@
 
 .item-name {
     display: block;
-    padding-top: 10px;
-    font-size: 16px;
+    padding-top: 0px;
+    font-size: 14px;
 }
 
 .item-price {
@@ -25,13 +25,14 @@
 }
 
 .item-quantity {
-    color: #ABB0BE;
+    color: rgb(149, 153, 163);
 }
 
 ul li {
     font: 14px/22px "Lato", Arial, sans-serif;
     display: inline;
     padding-left: 20px;
+    padding-top:0;
 }
 
 ul li a {
@@ -39,8 +40,3 @@ ul li a {
         text-decoration: none;
 }
 
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
