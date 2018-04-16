@@ -2,12 +2,12 @@
   margin: 20px 0;
   float: right;
   background: #E8E8E8;
-  width: 25vw;
+  width: 20vw;
   position: absolute;
   border-radius: 3px;
   padding: 20px;
   z-index: 15;
-  left: 74vw;
+  left: 78vw;
 }
 
 .shopping-cart:after {

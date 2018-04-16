@@ -27,7 +27,7 @@ class App extends Component {
         {
           id: 2,
           imagePath: 'https://mirukuottawacom.files.wordpress.com/2018/01/img_6395.jpg?w=533&h=336',
-          title: 'Sittori Cheese Terrine(Plain / Matcha)',
+          title: 'Sittori Cheese Terrine',
           description: '-Gluten free, Soft and smooth like ice cream, Rich Cheese taste, not Cheese scent or just flavor',
           price: 33
         }
@@ -44,7 +44,7 @@ class App extends Component {
         <Header onCart={()=> this.setState({showForm: !showForm})}/>
         { showForm ?
             <Cart products={this.state.products}/>: null}
-        <Product />
+        <Product products={this.state.products} />
       </div>
     );    
   }
