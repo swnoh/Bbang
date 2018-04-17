@@ -14,3 +14,7 @@
   z-index: 1;
   overflow-x: hidden;
 }
+
+.sidebar_menuItem{
+  cursor: pointer;  
+}
