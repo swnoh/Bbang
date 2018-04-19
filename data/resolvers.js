@@ -1,4 +1,4 @@
-const prepare = (o) => {
+const prepare = (products) => {
     o._id = o._id.toString()
     return o
   }

@@ -80,8 +80,8 @@ class App extends Component {
           <Header onCart={()=> this.setState({showForm: !showForm})} products={this.state.products}/>
           { showForm ?
               <Cart products={this.state.products}/>: null}
-          {/* <Product products={this.state.products} /> */}
-          <ProductsListWithData />
+          <Product products={this.state.products} />
+          {/* <ProductsListWithData /> */}
         </div>
       </ApolloProvider>
     );    
