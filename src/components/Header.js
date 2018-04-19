@@ -46,14 +46,8 @@ class Header extends Component {
           <li>
             <a onClick={this.openHandler.bind(this)} id="checkout">Checkout</a>
           </li>
-          <li>
-            <a>Login</a>
-          </li>
-          <li>
-            <a>Logout</a>
-          </li>
+          <ModalBackground contentComponent={contentName} setOpen={this.state.setOpen} closeHandler={this.closeHandler.bind(this)} products={this.props.products}/>
         </nav>
-        <ModalBackground contentComponent={contentName} setOpen={this.state.setOpen} closeHandler={this.closeHandler.bind(this)} />
       </header>;
   }
 }

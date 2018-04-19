@@ -2,8 +2,43 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Cart from './components/Cart';
-
 import Product from './components/Product';
+import { graphql, ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import gql from 'graphql-tag';
+
+
+const client = new ApolloClient({
+  link: new HttpLink({ uri: 'http://localhost:4000/graphql' }),
+  cache: new InMemoryCache(),
+}); 
+
+const productsListQuery = gql`
+    query ProductListQuery { 
+      products {
+          id
+          imagePath
+          title
+          description
+          price
+      }
+    }
+ `;
+
+ const ProductsList = ({ data: {loading, error, products }}) => {
+    if (loading) {
+      return <p>Loading ...</p>;
+    }
+    if (error) {
+      return <p>{error.message}</p>;
+    }
+
+    return <Product products={products} />
+};
+
+const ProductsListWithData = graphql(productsListQuery)(ProductsList);
 
 class App extends Component {
   constructor(props){
@@ -13,8 +48,8 @@ class App extends Component {
         {
           id: 0,
           imagePath: 'https://mirukuottawacom.files.wordpress.com/2018/01/img_6317.jpg?w=461&h=446',
-          title: 'Bulgogi Quiche',
-          description: '-Bulgogi is Korean Traditional beef dish which is marinated in sweet soy sauce',
+          title: 'aaBulgogi Quiche',
+          description: '-aaBulgogi is Korean Traditional beef dish which is marinated in sweet soy sauce',
           price: 4.25
         },
         {
@@ -40,12 +75,15 @@ class App extends Component {
   render() {
     const {showForm} = this.state;
     return (
-      <div className="App">
-        <Header onCart={()=> this.setState({showForm: !showForm})}/>
-        { showForm ?
-            <Cart products={this.state.products}/>: null}
-        <Product products={this.state.products} />
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Header onCart={()=> this.setState({showForm: !showForm})} products={this.state.products}/>
+          { showForm ?
+              <Cart products={this.state.products}/>: null}
+          {/* <Product products={this.state.products} /> */}
+          <ProductsListWithData />
+        </div>
+      </ApolloProvider>
     );    
   }
 }
