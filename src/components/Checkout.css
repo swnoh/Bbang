@@ -9,6 +9,20 @@
     margin: 10px 0;
 }
 
+#order-shopping-cart .title {
+  margin: 30px;
+}
+
+.form {
+  font-size: 13px;
+}
+
+.form-group.row {
+  margin: 30px 0;
+}
+.form-check-label {
+  margin: 10px 0;
+}
 input {
     margin: 0 5px 10px;
     border: 1px solid transparent;
@@ -16,31 +30,7 @@ input {
     transition: border .3s;
 }
 
-.btn {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    margin: 0;
-    padding: 0 !important;
-    opacity: 1;
-    border-radius: 0;
-    transition: opacity 0.2s;
-}
-
-.btn {
-    font-family: inherit;
-    font-size: 100%;
-    padding: .5em 1em;
-    color: #444;
-    color: rgba(0,0,0,.8);
-    border: 1px solid #999;
-    border: transparent;
-    background-color: #e6e6e6;
-    text-decoration: none;
-    border-radius: 2px;
-}
-
-.btn {
+#submitButton {
     display: inline-block;
     zoom: 1;
     white-space: nowrap;
@@ -54,23 +44,32 @@ input {
     user-select: none;
 }
 
-.btn {
+#submitButton {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.btn {
+#submitButton {
     line-height: normal;
 }
 
+
 legend {
     text-align: left;
+    font-size: 20px !important;
 }
 .form-check {
     text-align: left;
 }
 
+.form-check-input{
+    white-space: normal;
+    margin-left: -30px !important;
+}
 
+#location-text-input {
+  width: 250px;
+}
 
 .shopping-cart {
     width: 750px;
@@ -83,6 +82,31 @@ legend {
     display: flex;
     flex-direction: column;
   }
+
+.box .shopping-cart-items {
+    margin-top: 50px !important;
+}
+
+.box .shopping-cart-items img {
+    width: 100px;
+    height:100px;
+}
+
+.box .item-name {
+    display: block;
+    padding-top: 0px;
+    font-size: 18px;
+}
+
+.box .item-price {
+    color: #6394F8;
+    margin-right: 8px;
+}
+
+.box .item-quantity {
+    color: rgb(149, 153, 163);
+}
+
 
   .title {
     height: 60px;
@@ -108,142 +132,4 @@ legend {
     border-bottom:  1px solid rgba(170, 170, 170, 0.568);
   }
 
-  .buttons {
-    position: relative;
-    padding-top: 30px;
-    margin-right: 60px;
-  }
-  .delete-btn,
-  .like-btn {
-    display: inline-block;
-    Cursor: pointer;
-  }
-  .delete-btn {
-    width: 18px;
-    height: 17px;
-    background: url(&quot;delete-icn.svg&quot;) no-repeat center;
-  }
-   
-  .like-btn {
-    position: absolute;
-    top: 9px;
-    left: 15px;
-    background: url('https://designmodo.com/demo/shopping-cart/twitter-heart.png');
-    width: 60px;
-    height: 60px;
-    background-size: 2900%;
-    background-repeat: no-repeat;
-  }
 
-  .is-active {
-    animation-name: animate;
-    animation-duration: .8s;
-    animation-iteration-count: 1;
-    animation-timing-function: steps(28);
-    animation-fill-mode: forwards;
-  }
-   
-  @keyframes animate {
-    0%   { background-position: left;  }
-    50%  { background-position: right; }
-    100% { background-position: right; }
-  }
-
-  .image {
-    margin-right: 50px;
-  }
-
-  .image img {
-    width: 80px;
-  }
-   
-  .description {
-    padding-top: 10px;
-    margin-right: 60px;
-    width: 115px;
-  }
-   
-  .description span {
-    display: block;
-    font-size: 14px;
-    color: #43484D;
-    font-weight: 400;
-  }
-   
-  .description span:first-child {
-    margin-bottom: 5px;
-  }
-  .description span:last-child {
-    font-weight: 300;
-    margin-top: 8px;
-    color: #86939E;
-  }
-
-  .quantity {
-    padding-top: 20px;
-    margin-right: 60px;
-  }
-  .quantity input {
-    -webkit-appearance: none;
-    border: none;
-    text-align: center;
-    width: 32px;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
-  }
-   
-  /* button[class*=btn] {
-    width: 30px;
-    height: 30px;
-    background-color: #E1E8EE;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  } */
-  .minus-btn img {
-    margin-bottom: 3px;
-  }
-  .plus-btn img {
-    margin-top: 2px;
-  }
-   
-  button:focus,
-  input:focus {
-    outline:0;
-  }
-
-  .total-price {
-    width: 83px;
-    padding-top: 27px;
-    text-align: center;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
-  }
-
-  @media (max-width: 800px) {
-    .shopping-cart {
-      width: 100%;
-      height: auto;
-      overflow: hidden;
-    }
-    .item {
-      height: auto;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .image img {
-      width: 50%;
-    }
-    .image,
-    .quantity,
-    .description {
-      width: 100%;
-      text-align: center;
-      margin: 6px 0;
-    }
-    .buttons {
-      margin-right: 20px;
-    }
-  }

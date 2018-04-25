@@ -1,54 +1,94 @@
 import React, { Component } from "react";
 import './Header.css';
 import ModalBackground from './ModalBackground';
+import PlaceNewOrder from './PlaceNewOrder';
+import NotificationSystem from 'react-notification-system'
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
       setOpen: '',
-      contentComponent: 'Checkout'
+      email: '',
+      phone: '',
+      date: '',
+      location: '',
+      comment: '',
+      isSubmitForm: false,
     }
+
+    this.handleModal=this.handleModal.bind(this)
+    this.submitOrderForm = this.submitOrderForm.bind(this);
+    this.clearOrderForm = this.clearOrderForm.bind(this);
   }
 
   static defaultProps = {
     onCart() {}
   };
 
-  openHandler = (e) => {
+  handleModal = (e) => {
     e.preventDefault();
+    this.setState({ setOpen: e.target.className === 'closebtn' ? '' : 'open' })
+  }
+
+  submitOrderForm (orderDetail) {
+    
     this.setState({
-      setOpen: 'open',
-      // contentComponent: e.target.id
+      email: orderDetail.email,
+      phone: orderDetail.phone,
+      date: orderDetail.date,
+      location: orderDetail.location,
+      comment: orderDetail.comment,
+      isSubmitForm: true,
     })
   }
 
-  closeHandler = (e) => {
-    e.preventDefault();
+  clearOrderForm() {
     this.setState({
-      setOpen: ''
+      email: '',
+      phone: '',
+      date: '',
+      location: '',
+      comment: '',
+      setOpen: '',
+      isSubmitForm: false,
     })
+
+    this._notificationSystem.addNotification({
+      title: 'Thank you!',
+      message: 'Your order is complete.',
+      level: 'success',
+      position: 'tc'
+    });
+  }
+
+  _notificationSystem= null
+
+  componentDidMount() {
+      this._notificationSystem = this.refs.notificationSystem;
   }
 
   render() {
-    const contentName = this.state.contentComponent
 
-    return <header>
-        <h2>ミルク MIRUKU</h2>
-        <nav>
-          <li>
-            <a onClick={this.props.onCart} id="cart">
-              <i className="fa fa-shopping-cart" /> Cart <span className="badge">
-                0
-              </span>
-            </a>
-          </li>
-          <li>
-            <a onClick={this.openHandler.bind(this)} id="checkout">Checkout</a>
-          </li>
-          <ModalBackground contentComponent={contentName} setOpen={this.state.setOpen} closeHandler={this.closeHandler.bind(this)} products={this.props.products}/>
-        </nav>
-      </header>;
+    return (
+        <header>
+            <nav>
+              <li>
+                <a onClick={this.props.onCart} id="cart">
+                  <i className="fa fa-shopping-cart" /> Cart <span className="badge"> 3 </span>
+                </a>
+              </li>
+
+              <li>
+                <a onClick={this.handleModal} id="checkout">Checkout</a>
+              </li>
+              
+              <ModalBackground setOpen={this.state.setOpen} handleModal={this.handleModal} products={this.props.products} submitOrderForm={this.submitOrderForm}/>
+              <PlaceNewOrder email={this.state.email} phone={this.state.phone} date={this.state.date} location={this.state.location} comment={this.state.comment} clearOrderForm={this.clearOrderForm} isSubmitForm={this.state.isSubmitForm}/> 
+            </nav>
+            <NotificationSystem ref="notificationSystem" />
+        </header>
+      )
   }
 }
 

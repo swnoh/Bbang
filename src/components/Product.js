@@ -89,7 +89,7 @@ class Product extends Component {
           </button>
         </div>
         <ReactDrawer open={this.state.open} position={this.state.position} onClose={this.onDrawerClose} noOverlay={this.state.noOverlay}>
-          <div class="product_description">
+          <div className="product_description">
             <i onClick={this.closeDrawer} className="icono-cross" />
             <ul>
               {side_description}

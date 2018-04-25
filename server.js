@@ -5,25 +5,35 @@ import mongoose from 'mongoose';
 
 import { schema } from './data/schema';
 
-mongoose.connect('mongodb://localhost/miruku', function (err) {
- 
-    if (err) throw err;
-  
-    console.log('Successfully connected');
-  
- });
-
-const Product = mongoose.model('Product', { imagePath: String,
-                                            title: String,
-                                            description: String,
-                                            price: Number });
-
 const express = require("express");
 const server = express();
 const PORT = 4000;
 
+mongoose.connect('mongodb://localhost/miruku', function (err) {
+    if (err) throw err;
+    console.log('Successfully connected');
+ });
+
+const productSchema = mongoose.Schema({
+    imagePath: String,
+    title: String,
+    description: String,
+    price: Number
+})
+
+const orderSchema = mongoose.Schema({
+    email: String,
+    phone: String,
+    date: String,
+    location: String,
+    comment: String
+})
+
+const Product = mongoose.model('Product', productSchema);
+const Order = mongoose.model('Order', orderSchema);
+
 server.use('*', cors({ origin: 'http://localhost:3000' }));
-server.use('/graphql', bodyParser.json(), graphqlExpress({schema, context: {Product}}));
+server.use('/graphql', bodyParser.json(), graphqlExpress({schema, context: {Product, Order}}));
 
 server.use('/graphiql', graphiqlExpress({
     endpointURL: '/graphql'
@@ -36,5 +46,3 @@ server.get("/", function(req, res){
 server.listen(PORT, () =>
     console.log(`GraphQL Server is now running on http://localhost:${PORT}`)
 );
-
-

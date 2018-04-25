@@ -10,7 +10,7 @@ class CartItem extends Component {
           <li>
             <img src={imagePath} alt={title} />
             <span className="item-name">{title}</span>
-            <span className="item-price">{price}</span>
+            <span className="item-price">${price}</span>
             <span className="item-quantity">Quantity: 01</span>
           </li>
         </ul>

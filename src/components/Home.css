@@ -1,0 +1,315 @@
+.carousel-fade .carousel-inner .item {
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+    z-index: 2;
+}
+
+.carousel-fullscreen .carousel-inner .item {
+    height: 100vh; 
+    min-height: 600px;
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+
+.carousel-fullscreen .carousel-caption {
+    top: 50%;  
+    bottom: auto;
+    -webkit-transform: translate(0, -50%); 
+    -ms-transform: translate(0, -50%); 
+    transform: translate(0, -50%);
+}
+
+.one{ background-image: url('/img/home-slide-1.jpg'); }
+.two{ background-image: url('/img/home-slide-2.jpg'); }
+.three{ background-image: url('/img/home-slide-3.jpg'); }
+.four{ background-image: url('/img/home-slide-4.jpg'); }
+.five{ background-image: url('/img/home-slide-5.jpg'); }
+
+
+.item .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.4;
+    transition: all 0.2s ease-out;
+}
+
+h1,h2,h3,h4 {
+    font-weight: 700;
+}
+
+.notice-content h1, .notice-content h2 {
+    color: rgb(54, 54, 54);
+    padding-top: 30px;
+}
+
+.notice-content p {
+    color: rgb(80, 80, 80);
+}
+
+.super-heading {
+    font-size: 70px; 
+}
+
+
+.super-paragraph {
+    font-size: 30px; font-weight: 300;
+}
+
+.carousel-caption .super-paragraph a,
+.carousel-caption .super-paragraph a:hover
+{
+    color: #fff;
+}
+
+
+.notice-content {
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+}
+
+
+
+html, body, .perspective {
+	width: 100%;
+	height: 100%;
+}
+
+.perspective {
+	background: #aaa;
+	position: relative;
+}
+
+.container-laydown {
+	background: #fff;
+	min-height: 100%;
+	position: relative;
+	outline: 1px solid rgba(0,0,0,0);
+	z-index: 10;
+	-webkit-transform: translateZ(0) translateX(0) rotateY(0deg); /* reset transforms (Chrome bug) */
+	transform: translateZ(0) translateX(0) rotateY(0deg);
+}
+
+.container-laydown::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0px;
+	opacity: 0;
+	background: rgba(0,0,0,0.2);
+	/* the transition delay of the height needs to be synced with the container transition time */
+	-webkit-transition: opacity 0.4s, height 0s 0.4s;
+	transition: opacity 0.4s, height 0s 0.4s;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.component {
+	margin: 0 auto;
+	width: 60%;
+	text-align: justify;
+	font-size: 1.5em;
+}
+
+/* Modal view */
+.perspective.modalview {
+	position: fixed;
+	-webkit-perspective: 1500px;
+	perspective: 1500px;
+}
+
+.modalview .container-laydown {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.modalview .wrapper {
+	-webkit-transform: translateZ(-1px); /* solves a rendering bug in Chrome on Windows */
+}
+
+.animate .container-laydown::after {
+	opacity: 1;
+	height: 101%;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+/* Outer Nav */
+.outer-nav {
+	position: absolute;
+	height: auto;
+	font-size: 2em;
+}
+
+.outer-nav.vertical {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.outer-nav.horizontal {
+	left: 50%;
+	width: 75%;
+	max-width: 1000px;
+	text-align: center;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.outer-nav.left {
+	left: 25%;
+}
+
+.outer-nav.right {
+	right: 25%;
+}
+
+.outer-nav.top {
+	top: 25%;
+}
+
+.outer-nav.bottom {
+	bottom: 25%;
+}
+
+.outer-nav a {
+	display: inline-block;
+	white-space: nowrap;
+	font-weight: 300;
+	margin: 0 0 30px 0;
+	color: #fff;
+	-webkit-transition: color 0.3s;
+	transition: color 0.3s;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.outer-nav a:hover {
+	color: #ffdccd;
+}
+
+.outer-nav.vertical a {
+	display: block;
+}
+
+.outer-nav.horizontal a {
+	margin: 15px 20px;
+}
+
+.outer-nav a::before {
+	display: inline-block;
+	font-family: 'typicons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	margin-right: 10px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.effect-laydown {
+	background: #b8b6b4;
+}
+
+.effect-laydown .container-laydown {
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+	-webkit-transform-origin: 50% 150%;
+	transform-origin: 50% 150%;
+}
+
+.effect-laydown.animate .container-laydown {
+	-webkit-transform: translateZ(-1500px) rotateX(80deg);
+	transform: translateZ(-1500px) rotateX(80deg);
+}
+
+.no-csstransforms3d .effect-laydown.animate .container-laydown {
+	top: 75%;
+}
+
+.effect-laydown .outer-nav a {
+	opacity: 0;
+	-webkit-transform: translateY(-200px) translateZ(-1000px);
+	transform: translateY(-200px) translateZ(-1000px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s;
+	transition: transform 0.4s, opacity 0.4s;
+}
+
+.effect-laydown.animate .outer-nav a {
+	opacity: 1;
+	-webkit-transform: translateY(0) translateZ(0);
+	transform: translateY(0) translateZ(0);
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(7){
+	-webkit-transition-delay: 0.0s;
+	transition-delay: 0.0s;
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(6) {
+	-webkit-transition-delay: 0.04s;
+	transition-delay: 0.04s;
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(5) {
+	-webkit-transition-delay: 0.08s;
+	transition-delay: 0.08s;
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(4) {
+	-webkit-transition-delay: 0.12s;
+	transition-delay: 0.12s;
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(3) {
+	-webkit-transition-delay: 0.16s;
+	transition-delay: 0.16s;
+}
+
+.effect-laydown.animate .outer-nav a:nth-child(2) {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+
+.effect-laydown.animate .outer-nav a:first-child {
+	-webkit-transition-delay: 0.24s;
+	transition-delay: 0.24s;
+}

@@ -32,7 +32,7 @@ class SideBar extends Component {
     const products = this.props.products;
     const productItem = products.map(r => <AccordionItemBody>
         <div>
-          <a class="sidebar_menuItem" key={r.id} id={r.id} data={r.id} onClick={this.handleClick}>
+          <a className="sidebar_menuItem" key={r.id} id={r.id} data={r.id} onClick={this.handleClick}>
             {r.title}
           </a>
         </div>

@@ -1,10 +1,10 @@
 .shopping-cart {
-  margin: 20px 0;
+  margin: 90px 0;
   float: right;
   background: #E8E8E8;
   width: 20vw;
   position: absolute;
-  border-radius: 3px;
+  border-radius: 15px;
   padding: 20px;
   z-index: 15;
   left: 78vw;
@@ -12,7 +12,7 @@
 
 .shopping-cart:after {
 	bottom: 100%;
-	left: 89%;
+	left: 90%;
 	border: solid transparent;
 	content: " ";
 	height: 0;
@@ -21,7 +21,7 @@
 	pointer-events: none;
 	border-bottom-color: white;
 	border-width: 8px;
-	margin-left: -8px;
+	margin-left: -240px;
 }
 
 .shopping-cart .shopping-cart-header {

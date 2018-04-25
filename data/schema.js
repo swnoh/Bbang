@@ -12,7 +12,7 @@ const typeDefs = `
 
     type Cart {
         id: ID!,
-        product: [Product]!,
+        product: Product!,
         quantity: Int!
     }
 
@@ -22,12 +22,12 @@ const typeDefs = `
         phone: String,
         date: String!,
         location: String!,
-        comment: String,
-        cart: Cart!
+        comment: String
     }
 
     type Query {
-        products: [Product]
+        products: [Product],
+        orders: [Order],
     }
 
     type Mutation {
@@ -37,14 +37,13 @@ const typeDefs = `
                         price: Float!
                                             ): Product!,
         
-        newOrder(
-                    id: ID!,
+        placeNewOrder(
                     email: String!,
                     phone: String,
                     date: String!,
                     location: String!,
                     comment: String,
-                                    ): Order!
+                                    ): Order!,
         },
 `;
 

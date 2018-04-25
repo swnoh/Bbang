@@ -1,44 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
+import Home from './components/Home'
 import Cart from './components/Cart';
 import Product from './components/Product';
-import { graphql, ApolloProvider } from 'react-apollo';
+import ProductsListWithData from './components/ProductsListWithData';
+import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import gql from 'graphql-tag';
-
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: 'http://localhost:4000/graphql' }),
   cache: new InMemoryCache(),
 }); 
-
-const productsListQuery = gql`
-    query ProductListQuery { 
-      products {
-          id
-          imagePath
-          title
-          description
-          price
-      }
-    }
- `;
-
- const ProductsList = ({ data: {loading, error, products }}) => {
-    if (loading) {
-      return <p>Loading ...</p>;
-    }
-    if (error) {
-      return <p>{error.message}</p>;
-    }
-
-    return <Product products={products} />
-};
-
-const ProductsListWithData = graphql(productsListQuery)(ProductsList);
 
 class App extends Component {
   constructor(props){
@@ -68,20 +43,22 @@ class App extends Component {
         }
       ],
       nextProductId: 3,
-      showForm: false
+      showForm: false,
     }
+
   }
+
 
   render() {
     const {showForm} = this.state;
+   
     return (
       <ApolloProvider client={client}>
         <div className="App">
-          <Header onCart={()=> this.setState({showForm: !showForm})} products={this.state.products}/>
-          { showForm ?
-              <Cart products={this.state.products}/>: null}
-          <Product products={this.state.products} />
-          {/* <ProductsListWithData /> */}
+          <Header onCart={()=> this.setState({showForm: !showForm})} products={this.state.products} />
+          { showForm ? <Cart products={this.state.products}/>: null}
+          <Home/>
+          <ProductsListWithData />
         </div>
       </ApolloProvider>
     );    
