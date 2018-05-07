@@ -1,0 +1,17 @@
+.container-fluid {
+    background-color: black !important;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container-fluid .col a{
+    color: rgb(177, 177, 177);
+    padding-right: 20px;
+}
+
+.social-icon {
+    color: rgb(177, 177, 177);
+    padding-right: 20px;
+}

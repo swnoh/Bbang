@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Home from './components/Home'
+import Footer from './components/Footer';
+import Home from './components/Home';
 import Cart from './components/Cart';
 import ContentDelivery from './components/ContentDelivery';
 import ProductsListWithData from './components/ProductsListWithData';
@@ -82,6 +83,7 @@ class App extends Component {
               handleRemoveCart={this.handleRemoveCart}
             />
           </div>
+          <Footer />
         </div>
       </ApolloProvider>
     );    

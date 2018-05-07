@@ -96,6 +96,8 @@ class Header extends Component {
          <header className={this.state.headerSticky} onScroll={this.listenScrollEvent} >
             <nav>
              {/* <nav className="navbar navbar-inverse" > */}
+             <a href="http://instagram.com/miruku_ottawa" target="_blank" class="fa fa-instagram fa-2x social-icon" />
+                <a href="https://www.facebook.com/MirukuOttawa" target="_blank" class="fa fa-facebook-square fa-2x social-icon" />
                 <li>
                   <a onClick={this.props.onCart} id="cart">
                     <i className="fa fa-shopping-cart" /> Cart <span className="badge"> {this.props.products.length} </span>
