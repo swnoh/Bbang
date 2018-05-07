@@ -1,8 +1,9 @@
 header{
-    color: #696969;
-    padding-left: 80vw;
-    padding-top: 5vh;
+    color: #363636;
+    padding-left: 80%;
+    padding-top: 2.5vh;
     padding-right: auto;
+    padding-bottom: 1.5vh;
 
     position:absolute;
     width:100%;
@@ -10,12 +11,17 @@ header{
     max-width:100%;
 }
 
-.navbar-default{
-    background:transparent;
-    background-image:none;
-    border-color:transparent;
-    box-shadow:none;
-  }
+header.sticky{
+    position: fixed;
+    transition: all 0.5s ease;
+    background-color: rgb(221, 221, 221);
+    background: rgb(51, 51, 51);
+}
+
+.navbar {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
 
 header li{
     list-style:none;
@@ -42,7 +48,7 @@ header nav{
 header nav li {
     margin: 0 15px;
     font-size: 17px; 
-    color: rgb(233, 233, 233)
+    color: rgb(233, 233, 233);
 }
 
 header nav li:first-child{
@@ -66,6 +72,27 @@ header nav li:last-child{
     white-space: nowrap;
 }
 
+.Toastify__toast-body h2{
+    color: rgb(99, 99, 99);
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 0;
+}
+
+.Toastify__toast-body h3{
+    color: rgb(190, 190, 190);
+    text-align: center;
+    padding-top: 15px;
+    margin-bottom: 0;
+    font-size: 1em;
+}
+
+.Toastify__toast--default {
+    background: rgb(31, 31, 31) !important;
+    border-radius: 50px !important;
+    min-height: 10px !important;
+    margin-top: 70px;
+}
 
 @media (max-width: 700px) {
   header{

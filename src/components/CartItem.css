@@ -1,19 +1,28 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+.shopping-cart-items {
+    padding: 20px;
+}
 
 .shopping-cart-items li {
+
     margin-bottom: 18px;
     }
 
-.shopping-cart-items img {
-    float: left;
+.shopping-cart-items button {
+    float: center;
     margin-right: 12px;
+}
+
+.shopping-cart-items img {
     width: 70px;
     height:70px;
 }
 
+
 .item-name {
+    color: rgb(212, 212, 212);
     display: block;
     padding-top: 0px;
     font-size: 14px;
@@ -36,7 +45,7 @@ ul li {
 }
 
 ul li a {
-        color: #777777;
-        text-decoration: none;
+    color: #777777;
+    text-decoration: none;
 }
 

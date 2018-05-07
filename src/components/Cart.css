@@ -1,36 +1,83 @@
 .shopping-cart {
-  margin: 90px 0;
-  float: right;
-  background: #E8E8E8;
-  width: 20vw;
-  position: absolute;
-  border-radius: 15px;
-  padding: 20px;
-  z-index: 15;
+  background: rgb(58, 58, 58);
+  /* border-radius: 10px; */
+
+  z-index: 5;
   left: 78vw;
+
+  position: fixed;
+  box-sizing: border-box;
+  height: 94%;
+  
+  top: 0;
+  bottom: auto;
+  left: auto;
+  right: 0px;
+
+  width: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
-.shopping-cart:after {
-	bottom: 100%;
-	left: 90%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: white;
-	border-width: 8px;
-	margin-left: -240px;
+.shopping-cart.showCart {
+  width: 20vw;
+  padding: 20px;
+  box-shadow: 0 0 15px 0 rgb(43, 43, 43);
 }
 
 .shopping-cart .shopping-cart-header {
-    border-bottom: 1px solid #E8E8E8;
-    padding-bottom: 15px;
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 15px;
 }
 .shopping-cart .shopping-cart-header .shopping-cart-total {
-      float: right;
+  padding-top: 13px;
+  color: rgb(190, 190, 190);
+  font-size: 17px;
+  text-align: right;
 }
+
+.shopping-cart h1 {
+  color: rgb(190, 190, 190);
+  text-align: center;
+  padding-top: 50px;
+}
+
+.shopping-cart-header .fa-shopping-cart {
+  color: rgb(190, 190, 190);
+  font-size: 25px;
+  padding: 5px;
+  margin-left: 60px;
+}
+
+.shopping-cart-header .badge {
+  font-size: 13px;
+}
+
+
+.fa-angle-double-right {
+  background: rgb(75, 75, 75);
+  border-radius: 10px;
+  z-index: 10;
+  cursor: pointer;
+
+  position: absolute;
+  width: 45px;
+  height: 40px;
+  text-align: center;
+
+  /* top: 60px;
+  bottom: auto;
+  left: auto;
+  right: 280px; */
+  padding: 0;
+  transition: 0.5s;
+
+  color: rgb(190, 190, 190);
+  font-size: 40px !important;
+  box-shadow: 3px 3px 15px 2px rgb(48, 48, 48);
+}
+
 
 .lighter-text {
   color: #ABB0BE;
@@ -41,7 +88,7 @@
 }
 
 .button {
-  background: #6394F8;
+  background: rgb(255, 119, 119);
   color:white;
   text-align: center;
   padding: 12px;

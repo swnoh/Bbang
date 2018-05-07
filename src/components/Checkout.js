@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Checkout.css';
 import CartItem from './CartItem';
-import Cart from './Cart';
+import Cart, {CartList} from './Cart';
 
 class Checkout extends Component {
     
@@ -12,12 +12,9 @@ class Checkout extends Component {
             pickupLocation: '',
             disabled: true
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleOptionChange = this.handleOptionChange.bind(this)
-        this.handleCustomOption = this.handleCustomOption.bind(this)
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
         
         let SELECTED_LOCATION = '';
@@ -47,7 +44,7 @@ class Checkout extends Component {
         event.target.reset();
     }
 
-    handleOptionChange(event) {
+    handleOptionChange = (event) => {
         this.setState({
             selectedLocation: event.target.value
         })
@@ -59,16 +56,16 @@ class Checkout extends Component {
         }
     }
 
-    handleCustomOption(event) {
+    handleCustomOption = (event) => {
         this.setState({
             pickupLocation: event.target.value
         })
     }
 
     render () {  
-        const Item = this.props.products.map((r, index) => (
-            <CartItem key={r.id} {...r} />
-        ))
+        const cartItem = this.props.products.map((product) => {
+            return (<CartItem key={product.id} {...product} onClick={()=>this.props.handleRemoveCart(product.id)}/>)
+        })
 
         return (
         <div className="container-fluid">
@@ -80,7 +77,7 @@ class Checkout extends Component {
                 <div className="title">
                     Shopping Bag
                 </div>  
-                {Item}
+                {cartItem}
             </div>
 
             
@@ -90,7 +87,7 @@ class Checkout extends Component {
                 </div>
 
                 <div className="form" id="checkout-form">
-                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">
                             <label htmlFor="email-input" className="col-2 col-form-label">Email</label>
                             <div className="col-10">
@@ -102,14 +99,14 @@ class Checkout extends Component {
                             <label htmlFor="tel-input" className="col-2 col-form-label">Phone</label>
                             <div className="col-10">
                                 <input  className="form-control" type="tel" 
-                                        placeholder="1-(555)-555-5555" id="tel-input" required />
+                                        placeholder="1-(555)-555-5555" id="tel-input"  />
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="datetime-local-input" className="col-2 col-form-label">Date and time</label>
                             <div className="col-10">
                                 <input  className="form-control" type="datetime-local" 
-                                        placeholder="2011-08-19T13:45:00" id="datetime-local-input" required />
+                                        placeholder="2011-08-19T13:45:00" id="datetime-local-input"  />
                             </div>
                         </div>
                         <div className="form-group row">
@@ -153,7 +150,7 @@ class Checkout extends Component {
                                 <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
                             </div>
                         </div>
-                        <button type="submit" id="submitButton" className="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" id="submitButton" className="btn btn-block">Submit</button>
                     </form>
                 </div>
             </div>

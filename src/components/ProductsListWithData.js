@@ -16,7 +16,7 @@ const productsListQuery = gql`
     }
  `;
 
- const ProductsListWithData = () => (
+ const ProductsListWithData = (props) => (
    <Query query={productsListQuery}>
      {({ loading, error, data }) => {
       if (loading) {
@@ -26,7 +26,6 @@ const productsListQuery = gql`
         return <p>{error.message}</p>;
       }
 
-      // return <Product products={data.products} />
       return (
         <div className="container">
           <div className="jumbotron">
@@ -41,7 +40,7 @@ const productsListQuery = gql`
                     <div className="caption">
                       <p>{r.title}</p>
                     </div>
-                    <button className="btn btn-primary">Add Cart</button>
+                    <button className="btn btn-primary" onClick={()=>props.handleAddCart(r)}>Add Cart</button>
                 </div>
               </div>)}
           </div>

@@ -1,3 +1,13 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.home-content {
+    transition: margin-right .5s;
+    margin-right: 0;
+}
+
+.home-content.showCart {
+    transition: margin-right .5s;
+    margin-right: 20vw;
+}

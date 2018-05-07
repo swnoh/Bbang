@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home'
 import Cart from './components/Cart';
-import Product from './components/Product';
+import ContentDelivery from './components/ContentDelivery';
 import ProductsListWithData from './components/ProductsListWithData';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -19,46 +19,69 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      products: [
-        {
-          id: 0,
-          imagePath: 'https://mirukuottawacom.files.wordpress.com/2018/01/img_6317.jpg?w=461&h=446',
-          title: 'Bulgogi Quiche',
-          description: ["Individual Size", "Perfect for brunch", "Bulgogi is Korean Traditional beef dish which is marinated in sweet soy sauce", "Broccoli, Cheese, Tomato, Bulgogi(beef)" ],
-          price: 4.25
-        },
-        {
-          id: 1,
-          imagePath: 'https://mirukuottawacom.files.wordpress.com/2018/01/3b2dc945752bb3f8e6a1255605_original_.jpg?w=476&h=476&crop=1',
-          title: 'Matcha Red bean Crepe',
-          description: ['Using organic high quality Matcha – Fresh and unique taste with Redbean'],
-          price: 20
-        },
-        {
-          id: 2,
-          imagePath: 'https://mirukuottawacom.files.wordpress.com/2018/01/img_6395.jpg?w=533&h=336',
-          title: 'Sittori Cheese Terrine',
-          description: ['-Gluten free, Soft and smooth like ice cream, Rich Cheese taste, not Cheese scent or just flavor'],
-          price: 33
-        }
-      ],
-      nextProductId: 3,
-      showForm: false,
+      showCart: false,
+      products: [],
+      setOpen: false
     }
+  }
 
+  handleAddCart = (product) => {
+    this.setState({
+      products: [...this.state.products, product],
+      showCart: true
+    })
+  }
+
+  handleRemoveCart = (productId) => {
+    this.setState({
+      products: this.state.products.filter(product => product.id !== productId)
+    })
+  }
+  
+  handleModal = () => {
+    this.setState({ setOpen: !this.state.setOpen })
+  }
+
+  handleOpenModal = () => {
+    this.setState({ setOpen: true })
+  }
+
+  handleCloseModal = () => {
+    this.setState({ setOpen: false })
+  }
+
+  onCart = () => {
+    this.setState({showCart: !this.state.showCart})
   }
 
 
   render() {
-    const {showForm} = this.state;
-   
     return (
       <ApolloProvider client={client}>
         <div className="App">
-          <Header onCart={()=> this.setState({showForm: !showForm})} products={this.state.products} />
-          { showForm ? <Cart products={this.state.products}/>: null}
+          <Header 
+            onCart={this.onCart} 
+            products={this.state.products} 
+            showCart={this.state.showCart} 
+            setOpen={this.state.setOpen}
+            handleModal={this.handleModal}
+            handleOpenModal={this.handleOpenModal}
+            handleCloseModal={this.handleCloseModal}
+            handleRemoveCart={this.handleRemoveCart}
+          />
+          
           <Home/>
-          <ProductsListWithData />
+          <div className={this.state.showCart ? "home-content showCart":"home-content"}>
+            <ProductsListWithData handleAddCart={this.handleAddCart} />
+            <ContentDelivery />
+            <Cart 
+              onCart={this.onCart}
+              products={this.state.products}
+              showCart={this.state.showCart}
+              handleOpenModal={this.handleOpenModal}
+              handleRemoveCart={this.handleRemoveCart}
+            />
+          </div>
         </div>
       </ApolloProvider>
     );    

@@ -2,36 +2,57 @@ import React, { Component } from "react";
 import './Header.css';
 import ModalBackground from './ModalBackground';
 import PlaceNewOrder from './PlaceNewOrder';
-import NotificationSystem from 'react-notification-system'
+import { ToastContainer, toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
-      setOpen: '',
       email: '',
       phone: '',
       date: '',
       location: '',
       comment: '',
+      // setOpen: false,
       isSubmitForm: false,
+      headerSticky: ''
     }
-
-    this.handleModal=this.handleModal.bind(this)
-    this.submitOrderForm = this.submitOrderForm.bind(this);
-    this.clearOrderForm = this.clearOrderForm.bind(this);
   }
 
   static defaultProps = {
     onCart() {}
   };
 
-  handleModal = (e) => {
-    e.preventDefault();
-    this.setState({ setOpen: e.target.className === 'closebtn' ? '' : 'open' })
+  listenScrollEvent = (e) => {
+    e.preventDefault()
+    if (window.scrollY >= window.innerHeight) {
+      this.setState({
+        headerSticky: 'sticky'
+      })
+    } else {
+      this.setState({
+        headerSticky: ''
+      })
+      if (this.props.showCart) {
+        this.props.onCart()
+      }
+    }
   }
 
-  submitOrderForm (orderDetail) {
+  handleModal = (e) => {
+    e.preventDefault();
+    // this.setState({ setOpen: !this.state.setOpen })
+    this.props.handleCloseModal()
+    // this.state.setOpen ? this.props.handleCloseModal() :
+  }
+
+  handleCloseModal = (e) => {
+    e.preventDefault();
+    this.setState({ setOpen: false })
+  }
+
+  submitOrderForm = (orderDetail) => {
     
     this.setState({
       email: orderDetail.email,
@@ -43,51 +64,69 @@ class Header extends Component {
     })
   }
 
-  clearOrderForm() {
+  clearOrderForm = () => {
     this.setState({
       email: '',
       phone: '',
       date: '',
       location: '',
       comment: '',
-      setOpen: '',
       isSubmitForm: false,
     })
+    this.props.handleModal()
 
-    this._notificationSystem.addNotification({
-      title: 'Thank you!',
-      message: 'Your order is complete.',
-      level: 'success',
-      position: 'tc'
+    toast(<h2>Thank You!<br/><h3>Order is complete!</h3></h2>, { 
+      position: toast.POSITION.TOP_CENTER,
+      closeButton: false
     });
+
   }
 
-  _notificationSystem= null
+  componentWillUnmount(newProps) {
+    window.removeEventListener('scroll', this.listenScrollEvent);
+  }
 
   componentDidMount() {
-      this._notificationSystem = this.refs.notificationSystem;
+    window.addEventListener('scroll', this.listenScrollEvent);
   }
 
   render() {
 
     return (
-        <header>
+         <header className={this.state.headerSticky} onScroll={this.listenScrollEvent} >
             <nav>
-              <li>
-                <a onClick={this.props.onCart} id="cart">
-                  <i className="fa fa-shopping-cart" /> Cart <span className="badge"> 3 </span>
-                </a>
-              </li>
+             {/* <nav className="navbar navbar-inverse" > */}
+                <li>
+                  <a onClick={this.props.onCart} id="cart">
+                    <i className="fa fa-shopping-cart" /> Cart <span className="badge"> {this.props.products.length} </span>
+                  </a>
+                </li>
 
-              <li>
-                <a onClick={this.handleModal} id="checkout">Checkout</a>
-              </li>
-              
-              <ModalBackground setOpen={this.state.setOpen} handleModal={this.handleModal} products={this.props.products} submitOrderForm={this.submitOrderForm}/>
-              <PlaceNewOrder email={this.state.email} phone={this.state.phone} date={this.state.date} location={this.state.location} comment={this.state.comment} clearOrderForm={this.clearOrderForm} isSubmitForm={this.state.isSubmitForm}/> 
-            </nav>
-            <NotificationSystem ref="notificationSystem" />
-        </header>
+                <li>
+                  <a onClick={this.props.handleModal} id="checkout">Checkout</a>
+                </li>
+                
+                <ModalBackground  
+                  setOpen={this.props.setOpen}
+                  handleCloseModal={this.handleCloseModal}
+                  handleModal={this.props.handleModal}
+                  submitOrderForm={this.submitOrderForm} 
+                  products={this.props.products}
+                  handleRemoveCart={this.props.handleRemoveCart}
+                />
+
+                <PlaceNewOrder  
+                  email={this.state.email} 
+                  phone={this.state.phone} 
+                  date={this.state.date}                 
+                  location={this.state.location} 
+                  comment={this.state.comment} 
+                  clearOrderForm={this.clearOrderForm} 
+                  isSubmitForm={this.state.isSubmitForm}
+                /> 
+              </nav>
+              <ToastContainer transition={Flip} hideProgressBar={true}/>
+          </header>
       )
   }
 }
