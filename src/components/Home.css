@@ -1,3 +1,12 @@
+.home-single-page {
+    font-family: 'Quicksand', sans-serif ;
+    font-family: 'Josefin Sans', sans-serif!important;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Lobster', cursive;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
+}
+
 .carousel-fade .carousel-inner .item {
     -webkit-transition-property: opacity;
     transition-property: opacity;
@@ -21,7 +30,7 @@
     transform: translate3d(0, 0, 0);
 }
 .carousel-fade .carousel-control {
-    z-index: 2;
+    z-index: 10;
 }
 
 .carousel-fullscreen .carousel-inner .item {
@@ -60,13 +69,17 @@ h1,h2,h3,h4 {
     font-weight: 700;
 }
 
-.notice-content h1, .notice-content h2 {
-    color: rgb(54, 54, 54);
-    padding-top: 30px;
+.carousel-caption h1, .carousel-caption h2 {
+    color: rgb(195, 195, 195);
+    /* font-family: 'Aldrich', sans-serif; */
+    font-family: 'Rock Salt', cursive;
 }
 
-.notice-content p {
-    color: rgb(80, 80, 80);
+.carousel-caption p {
+    color: rgb(218, 218, 218);
+    font-family: 'Amatic SC', cursive;
+    font-size: 40px;
+    letter-spacing: 4px;
 }
 
 .super-heading {
@@ -90,17 +103,18 @@ h1,h2,h3,h4 {
     padding-bottom: 50px; 
 }
 
+.home-social {
+    position: absolute;
+    z-index: 3;
+    top: 95%;
+    left: 48%;
+    text-decoration: none;
+}
 
-.test-style {
-    font-family: inherit;
-    position: fixed;
-    width: 320px;
-    padding: 0px 10px 10px;
-    z-index: 100;
-    box-sizing: border-box;
-    height: auto;
-    top: 30%;
-    bottom: auto;
-    left: auto;
-    right: 0px;
+.home-social a {
+    color: rgb(177, 177, 177);
+}
+
+.home-social a:hover {
+    color: white;
 }

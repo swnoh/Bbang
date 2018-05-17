@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
 import './Checkout.css';
 import CartItem from './CartItem';
-import Cart, {CartList} from './Cart';
+import Cart from './Cart';
+
+const CartList = ({products, handleRemoveCart}) => {
+    const cartItem = products.map((product) => {
+        return (<CartItem key={product.id} {...product} onClick={()=>handleRemoveCart(product.id)}/>)
+    })
+
+    return (
+        <div className="shopping-cart-body">
+            <ul>{cartItem}</ul>
+        </div>
+    )
+}
+
+const CartTotal = ({products}) => {
+    let priceArr = 0;
+
+    let totalPrice = products.map((product) => {
+        return priceArr += product.price;
+    }).reduce((a, b) => a + b, 0);
+
+    return (
+        <div className="order-shopping-cart-total">
+            <span className="lighter-text">Total: </span>
+            <span className="main-color-text">$ {totalPrice}</span>
+        </div>
+    )
+}
 
 class Checkout extends Component {
     
@@ -37,7 +64,7 @@ class Checkout extends Component {
             phone: event.target[1].value,
             date: event.target[2].value,
             location: SELECTED_LOCATION,
-            comment: event.target[7].value,
+            comment: event.target[8].value,
         }
 
         this.props.submitOrderForm(submitOrder);
@@ -63,30 +90,30 @@ class Checkout extends Component {
     }
 
     render () {  
-        const cartItem = this.props.products.map((product) => {
-            return (<CartItem key={product.id} {...product} onClick={()=>this.props.handleRemoveCart(product.id)}/>)
-        })
-
         return (
-        <div className="container-fluid">
-            <div className="box col-6" id="order-shopping-cart">
+        <div className="container-fluid checkout">
+            <div className="box col-sm-12 col-md-5 col-xl-4" id="order-shopping-cart">
                 <div className="box-title">
-                    <h1>Cart</h1>
+                    <h1>Shopping Bag</h1>
                 </div>
-
-                <div className="title">
-                    Shopping Bag
-                </div>  
-                {cartItem}
+                <CartTotal products={this.props.products}/>
+                {this.props.products.length > 0 && (
+                    <CartList products={this.props.products} handleRemoveCart={this.props.handleRemoveCart}/>
+                )}
+                {this.props.products.length === 0 && (
+                    <div className="shopping-cart-empty">
+                        <h1>Cart is empty</h1>
+                    </div>
+                )}
             </div>
 
             
-            <div className="box col-5">
+            <div className="box col-sm-12 col-md-7 col-xl-6" id="checkout-form">
                 <div className="box-title">
                     <h1>Checkout</h1>
                 </div>
 
-                <div className="form" id="checkout-form">
+                <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group row">
                             <label htmlFor="email-input" className="col-2 col-form-label">Email</label>
@@ -103,10 +130,23 @@ class Checkout extends Component {
                             </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="datetime-local-input" className="col-2 col-form-label">Date and time</label>
+                            <label htmlFor="datetime-local-input" className="col-2 col-form-label">Date</label>
                             <div className="col-10">
-                                <input  className="form-control" type="datetime-local" 
+                                <input  className="form-control" type="month" 
                                         placeholder="2011-08-19T13:45:00" id="datetime-local-input"  />
+                            </div>
+                        </div>
+                        <div className="form-group row">
+                            <label htmlFor="time-input" className="col-2 col-form-label">Time</label>
+                            <div className="col-10">
+                                <select className="form-control">
+                                    <option disabled selected value> -- select time -- </option>
+                                    <option>11am</option>
+                                    <option>12pm</option>
+                                    <option>1pm</option>
+                                    <option>2pm</option>
+                                    <option>3pm</option>
+                                </select>
                             </div>
                         </div>
                         <div className="form-group row">
@@ -151,6 +191,7 @@ class Checkout extends Component {
                             </div>
                         </div>
                         <button type="submit" id="submitButton" className="btn btn-block">Submit</button>
+                        <br/><br/><p>*Please allow us few days notice for any order.</p>
                     </form>
                 </div>
             </div>

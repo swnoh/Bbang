@@ -1,11 +1,12 @@
 header{
     color: #363636;
-    padding-left: 80%;
-    padding-top: 2.5vh;
-    padding-right: auto;
-    padding-bottom: 1.5vh;
+    padding-top: 0.9vh;
+    padding-bottom: 0.9vh;
+    /* padding-left: 60%; */
+    /* padding-right: auto; */
 
-    position:absolute;
+    position: fixed;
+    display: block;
     width:100%;
     z-index:10;
     max-width:100%;
@@ -15,16 +16,24 @@ header.sticky{
     position: fixed;
     transition: all 0.5s ease;
     background-color: rgb(221, 221, 221);
-    background: rgb(51, 51, 51);
+    background: var(--background-header);
+    box-shadow: 0 0 7px 0 rgb(43, 43, 43);
 }
 
 .navbar {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; */
+    margin-bottom: 0;
+    padding: 0 !important;
+    min-height: 0;
+    /* min-width: 300px; */
+    justify-content: flex-start !important;
+    padding-left: 20px !important;
 }
 
 header li{
     list-style:none;
+    text-decoration: none;
 }
 
 header a{
@@ -34,29 +43,69 @@ header a{
     opacity: 0.9;
 }
 
-header a:hover{
-    opacity: 1;
+.header-link .active {
+    text-decoration: none;
+    color: rgb(241, 241, 241);
+    font-size: 1.03em;
 }
 
-header nav{
-    display: flex;
-    background-color: transparent;
-    background: transparent;
-    border-color: transparent;
+header a:hover{
+    opacity: 1;
+    text-decoration: none;
+    color: rgb(192, 191, 192);
 }
 
 header nav li {
-    margin: 0 15px;
-    font-size: 17px; 
+    margin: 0 0;
+    font-size: 18px; 
     color: rgb(233, 233, 233);
-}
-
-header nav li:first-child{
-    margin-left: 0;
+    padding-right: 30px;
 }
 
 header nav li:last-child{
-    margin-left: 0;
+    padding-right: 40%;
+}
+
+/* header nav .social-icon {
+    padding-right: 0;
+} */
+
+
+.navbar-collapse{
+    top:20px !important;
+}
+
+
+header nav .header-link a:first-child {
+    font-family: 'Lobster' !important;
+    font-size: 20px;
+}
+
+.header-link {
+    margin: 0 0;
+    font-size: 18px; 
+    color: rgb(182, 182, 182);
+}
+
+.header-link a{
+    margin: 0 10px;
+}
+
+.header-link a:first-child {
+    margin: 0 60px;
+    color: white;
+    font-size: 1em;
+}
+
+#header-cart {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#header-cart-items {
+    overflow: hidden;
+    white-space: nowrap;
+    text-color: yellow;
 }
 
 .badge {
@@ -94,10 +143,11 @@ header nav li:last-child{
     margin-top: 70px;
 }
 
-@media (max-width: 700px) {
-  header{
-    flex-direction: column;
-  }
+@media (max-width: 768px) {
+
+  .header-link a:first-child {
+    margin: 0;
+}
 
   header h2{
     margin-bottom: 15px;

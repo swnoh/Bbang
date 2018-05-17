@@ -14,6 +14,23 @@ const placeNewOrderMutation = gql`
     }
 `;
 
+/*
+mutation{
+  createProduct (
+    imagePath: "https://www.dropbox.com/s/e2cpoi483bbozfa/KakaoTalk_Moim_4qVikdQsH58Q6D5o728G69glEr94VH.jpg?raw=1"
+        title: "Royal milk tea bottle"
+        description: "Infused earl grey leaf with milk, a minimum amount of sweetness "
+        price: 6.5 ) 
+  {
+    id,
+    price,
+    imagePath,
+    description
+  }
+}
+*/
+
+
 class PlaceNewOrder extends Component {
     constructor() {
         super()

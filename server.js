@@ -10,15 +10,16 @@ const server = express();
 const PORT = 4000;
 
 mongoose.connect('mongodb://localhost/miruku', function (err) {
+// mongoose.connect('mongodb://bbang:0320@ds123490.mlab.com:23490/miruku', function (err) {
     if (err) throw err;
     console.log('Successfully connected');
  });
 
 const productSchema = mongoose.Schema({
-    imagePath: String,
-    title: String,
-    description: String,
-    price: Number
+    imagePath: Array,
+    title: Array,
+    description: Array,
+    price: Array
 })
 
 const orderSchema = mongoose.Schema({

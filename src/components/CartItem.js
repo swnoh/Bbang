@@ -5,17 +5,20 @@ class CartItem extends Component {
   render() {
     const {imagePath, title, price, onClick} = this.props;
     return (
-      <div>
-        <ul className="shopping-cart-items">
-          <li>
-            <button className="btn btn-danger btn-xs" onClick={onClick}>X</button>
+          <li className="shopping-cart-items">
             <img src={imagePath} alt={title} />
-            <span className="item-name">{title}</span>
-            <span className="item-price">${price}</span>
-            <span className="item-quantity">Quantity: 01</span>
+            <div className="shopping-cart-items-info">
+              <strong>{title}</strong>
+              <ul>
+                <li>1 bottle (350ml)</li>
+                <li>${price}</li>
+                <li>A whole cake needs to be picked up at only 1280 Baseline Rd.</li>
+              </ul>
+            </div>
+            <a onClick={onClick}><i class="fa fa-trash"></i></a>
+            {/* <button className="btn btn-danger btn-xs" onClick={onClick}>X</button> */}
           </li>
-        </ul>
-      </div>
+        // </ul>
     );
   }
 }

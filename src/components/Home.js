@@ -1,95 +1,51 @@
 import React, { Component } from 'react'
 import './Home.css'
+import { Link } from 'react-router-dom';
 
-import NotificationSystem from 'react-notification-system'
+const CarouselContent = () => {
+    return (
+        <React.Fragment>
+            <Overlay />
+            <div className="carousel-caption">
+                <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
+                <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
+                <ShopLinkButton />
+            </div>
+        </React.Fragment>
+    )
+}
+
+const ShopLinkButton = () => {
+    return <Link to="/shop"><button className="btn btn-outline-light btn-lg">SHOP</button></Link>
+}
+
+const Overlay = () => {
+    return <div className="overlay"></div>
+}
 
 class Home extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            modalview: ''
-        }
-    }
-
-    _notificationSystem= null
-
-    _addNotification =  function(event) {
-        event.preventDefault();
-        this._notificationSystem.addNotification({
-            title: 'Thank you!',
-            message: 'Your order is complete.',
-            level: 'success',
-            position: 'tr',
-            autoDismiss: 0,
-        });
-      }
-
-    componentDidMount() {
-        this._notificationSystem = this.refs.notificationSystem;
-    }
-
     render() {
         return (
-            // <div className="container">
-            // <div className="row">
-            //     <div className="col-md-12">
             <div className="home-single-page">
-                    <div id="carousel-home" className="carousel carousel-fullscreen slide carousel-fade" data-ride="carousel" 
-                            data-interval="5000" data-pause="null">
-                        
-                        <div className="carousel-inner" role="listbox">
-                            <div className="item one active">
-                                <div className="overlay"></div>
-                                    <div className="carousel-caption">
-                                        <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
-                                        <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
-                                        <button className="btn btn-outline-light btn-lg">SHOP</button>
-                                    </div>
-                                </div>
-                            <div className="item two">
-                                <div className="carousel-caption">
-                                <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
-                                <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
-                                <button className="btn btn-outline-light btn-lg">SHOP</button>
-                                </div>
-                            </div>
-                            <div className="item three">
-                                <div className="overlay"></div>
-                                    <div className="carousel-caption">
-                                        <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
-                                        <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
-                                        <button className="btn btn-outline-light btn-lg">SHOP</button>
-                                    </div>
-                            </div>
-                            <div className="item four"> 
-                                <div className="overlay"></div>
-                                    <div className="carousel-caption">
-                                        <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
-                                        <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
-                                        <button className="btn btn-outline-light btn-lg">SHOP</button>
-                                    </div>
-                            </div>
-                            <div className="item five"> 
-                                <div className="overlay"></div>
-                                    <div className="carousel-caption">
-                                        <h1 className="super-heading">ミルク MIRUKU</h1><br/><br/>
-                                        <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p><br/>
-                                        <button className="btn btn-outline-light btn-lg">SHOP</button>
-                                    </div>
-                            </div>
-                        </div>
-
-                        
-                        <div className="test-style">
-                            <NotificationSystem ref="notificationSystem" />
-                        </div>
+                <div id="carousel-home" className="carousel carousel-fullscreen slide carousel-fade" data-ride="carousel" 
+                        data-interval="5000" data-pause="null">
+                    
+                    <div className="carousel-inner" role="listbox">
+                        <div className="item one active"> <CarouselContent /> </div>
+                        <div className="item two"> <CarouselContent /> </div>
+                        <div className="item three"> <CarouselContent /> </div>
+                        <div className="item four"> <CarouselContent /> </div>
+                        <div className="item five"> <CarouselContent /> </div>
                     </div>
-
+                    
+                    <div className="home-social">
+                        <a href="http://instagram.com/miruku_ottawa" target="_blank" class="fa fa-instagram fa-3x social-icon" />&emsp;&emsp;
+                        <a href="https://www.facebook.com/MirukuOttawa" target="_blank" class="fa fa-facebook-square fa-3x social-icon" />
+                    </div>
                 </div>
-        //         </div>
-        //     </div>
-        // </div>
+
+            </div>
         )
     }
 }

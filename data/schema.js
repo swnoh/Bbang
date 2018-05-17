@@ -1,13 +1,14 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import { resolvers } from './resolvers';
 
+
 const typeDefs = `
     type Product {
         id: ID!,
-        imagePath: String!,
-        title: String!,
-        description: String!,
-        price: Float!
+        imagePath: [String]!,
+        title: [String]!,
+        description: [String]!,
+        price: [Float]!
     }
 
     type Cart {
@@ -31,19 +32,25 @@ const typeDefs = `
     }
 
     type Mutation {
-        createProduct(  imagePath: String!,
-                        title: String!,
-                        description: String!,
-                        price: Float!
+        createProduct(  imagePath: [String]!,
+                        title: [String]!,
+                        description: [String]!,
+                        price: [Float]!
                                             ): Product!,
+
+        updateProduct(  id: ID!,
+                        imagePath: [String]!,
+                        title: [String]!,
+                        description: [String]!,
+                        price: [Float]!
+                                            ): Product!,                                    
         
-        placeNewOrder(
-                    email: String!,
-                    phone: String,
-                    date: String!,
-                    location: String!,
-                    comment: String,
-                                    ): Order!,
+        placeNewOrder(  email: String!,
+                        phone: String,
+                        date: String!,
+                        location: String!,
+                        comment: String,
+                                        ): Order!,
         },
 `;
 

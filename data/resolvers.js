@@ -18,6 +18,9 @@ export const resolvers = {
       createProduct: async (parent, args, { Product }) => {
         return prepare(await new Product(args).save())
       },
+      updateProduct: async (parent, args, { Product }) => {
+        return prepare(await Product.findByIdAndUpdate( args.id, args ))
+      },
       placeNewOrder: async (parent, args, { Order }) => {
         const api_key = 'key-3d6721979268461abb7379a88aa07941';
         const domain = 'sandbox64d6a785450349a38522b8b556fd86ce.mailgun.org';

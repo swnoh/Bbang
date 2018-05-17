@@ -4,6 +4,7 @@ import ModalBackground from './ModalBackground';
 import PlaceNewOrder from './PlaceNewOrder';
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link, NavLink } from 'react-router-dom';
 
 class Header extends Component {
   constructor() {
@@ -14,7 +15,6 @@ class Header extends Component {
       date: '',
       location: '',
       comment: '',
-      // setOpen: false,
       isSubmitForm: false,
       headerSticky: ''
     }
@@ -23,34 +23,6 @@ class Header extends Component {
   static defaultProps = {
     onCart() {}
   };
-
-  listenScrollEvent = (e) => {
-    e.preventDefault()
-    if (window.scrollY >= window.innerHeight) {
-      this.setState({
-        headerSticky: 'sticky'
-      })
-    } else {
-      this.setState({
-        headerSticky: ''
-      })
-      if (this.props.showCart) {
-        this.props.onCart()
-      }
-    }
-  }
-
-  handleModal = (e) => {
-    e.preventDefault();
-    // this.setState({ setOpen: !this.state.setOpen })
-    this.props.handleCloseModal()
-    // this.state.setOpen ? this.props.handleCloseModal() :
-  }
-
-  handleCloseModal = (e) => {
-    e.preventDefault();
-    this.setState({ setOpen: false })
-  }
 
   submitOrderForm = (orderDetail) => {
     
@@ -73,7 +45,10 @@ class Header extends Component {
       comment: '',
       isSubmitForm: false,
     })
+
     this.props.handleModal()
+    this.props.handleInitialCart()
+    this.props.offCart()
 
     toast(<h2>Thank You!<br/><h3>Order is complete!</h3></h2>, { 
       position: toast.POSITION.TOP_CENTER,
@@ -82,42 +57,43 @@ class Header extends Component {
 
   }
 
-  componentWillUnmount(newProps) {
-    window.removeEventListener('scroll', this.listenScrollEvent);
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.listenScrollEvent);
-  }
-
   render() {
 
     return (
-         <header className={this.state.headerSticky} onScroll={this.listenScrollEvent} >
-            <nav>
-             {/* <nav className="navbar navbar-inverse" > */}
-             <a href="http://instagram.com/miruku_ottawa" target="_blank" class="fa fa-instagram fa-2x social-icon" />
-                <a href="https://www.facebook.com/MirukuOttawa" target="_blank" class="fa fa-facebook-square fa-2x social-icon" />
-                <li>
-                  <a onClick={this.props.onCart} id="cart">
-                    <i className="fa fa-shopping-cart" /> Cart <span className="badge"> {this.props.products.length} </span>
-                  </a>
-                </li>
+        <header className={this.props.headerSticky} >
+             <nav className="navbar navbar-expand-md navbar-dark" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav mr-auto header-link">
+                      <NavLink exact to="/">Miruku</NavLink>
+                      <NavLink exact to="/">Home</NavLink>
+                      <NavLink to="/about">About</NavLink>
+                      <NavLink to="/shop">Shop</NavLink>
+                    </ul>
+                    <ul class="navbar-nav ml-auto" id="header-cart-items">
+                      <li>
+                        <a onClick={this.props.onCart} id="header-cart">
+                          <i className="fa fa-shopping-cart" /> Cart <span className="badge"> {this.props.products.length} </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a onClick={this.props.handleModal} id="checkout">Checkout</a>
+                      </li>
+                    </ul>
+                  </div>
+              </nav>
 
-                <li>
-                  <a onClick={this.props.handleModal} id="checkout">Checkout</a>
-                </li>
-                
-                <ModalBackground  
+              <ModalBackground  
                   setOpen={this.props.setOpen}
-                  handleCloseModal={this.handleCloseModal}
                   handleModal={this.props.handleModal}
                   submitOrderForm={this.submitOrderForm} 
                   products={this.props.products}
                   handleRemoveCart={this.props.handleRemoveCart}
                 />
 
-                <PlaceNewOrder  
+                <PlaceNewOrder
                   email={this.state.email} 
                   phone={this.state.phone} 
                   date={this.state.date}                 
@@ -126,7 +102,6 @@ class Header extends Component {
                   clearOrderForm={this.clearOrderForm} 
                   isSubmitForm={this.state.isSubmitForm}
                 /> 
-              </nav>
               <ToastContainer transition={Flip} hideProgressBar={true}/>
           </header>
       )
