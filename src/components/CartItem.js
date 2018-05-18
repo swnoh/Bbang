@@ -15,7 +15,7 @@ class CartItem extends Component {
                 <li>A whole cake needs to be picked up at only 1280 Baseline Rd.</li>
               </ul>
             </div>
-            <a onClick={onClick}><i class="fa fa-trash"></i></a>
+            <a onClick={onClick}><i className="fa fa-trash"></i></a>
             {/* <button className="btn btn-danger btn-xs" onClick={onClick}>X</button> */}
           </li>
         // </ul>

@@ -40,8 +40,8 @@ class Home extends Component {
                     </div>
                     
                     <div className="home-social">
-                        <a href="http://instagram.com/miruku_ottawa" target="_blank" class="fa fa-instagram fa-3x social-icon" />&emsp;&emsp;
-                        <a href="https://www.facebook.com/MirukuOttawa" target="_blank" class="fa fa-facebook-square fa-3x social-icon" />
+                        <a href="http://instagram.com/miruku_ottawa" target="_blank" className="fa fa-instagram fa-3x social-icon" />&emsp;&emsp;
+                        <a href="https://www.facebook.com/MirukuOttawa" target="_blank" className="fa fa-facebook-square fa-3x social-icon" />
                     </div>
                 </div>
 
