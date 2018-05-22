@@ -7,7 +7,7 @@ const typeDefs = `
         imagePath: [String]!,
         title: [String]!,
         description: String!,
-        price: [Float]!,
+        price: [String]!,
         checkedMatchPrice: Boolean
     }
 
@@ -35,7 +35,7 @@ const typeDefs = `
         createProduct(  imagePath: [String]!,
                         title: [String]!,
                         description: String!,
-                        price: [Float]!,
+                        price: [String]!,
                         checkedMatchPrice: Boolean!
                                             ): Product!,
 
@@ -43,7 +43,7 @@ const typeDefs = `
                         imagePath: [String]!,
                         title: [String]!,
                         description: String!,
-                        price: [Float]!,
+                        price: [String]!,
                         checkedMatchPrice: Boolean!
                                             ): Product!,
                                                  

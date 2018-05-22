@@ -26,7 +26,7 @@ const MapComponent = withScriptjs(
 class ContentDelivery extends Component {
   render() {
     return (
-      <div className="container content-delivery">
+      <div className="container content-delivery transition-item">
         <div className="row">
           <div className="col-md-12">
             <h1>ABOUT MIRUKU</h1>

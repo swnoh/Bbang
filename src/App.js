@@ -5,13 +5,15 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import ContentDelivery from "./components/ContentDelivery";
+import ProductDetailWithData from "./components/ProductDetailWithData.js";
 import ProductsListWithData from "./components/ProductsListWithData";
 import MutationProduct from "./components/MutationProduct";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import PageTransition from "react-router-page-transition";
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: "http://localhost:4000/graphql" }),
@@ -28,7 +30,7 @@ class App extends Component {
     };
   }
 
-  handleAddCart = product => {
+  handleAddCart = ({ product }) => {
     this.setState({
       products: [...this.state.products, product],
       showCart: true
@@ -75,38 +77,44 @@ class App extends Component {
               handleRemoveCart={this.handleRemoveCart}
               handleInitialCart={this.handleInitialCart}
             />
-            <Switch>
-              <div
-                className={
-                  this.state.showCart ? "home-content showCart" : "home-content"
-                }
-              >
-                <Route exact path="/" component={Home} />
-                <div className="container-fluid content-body">
-                  <div className="col-12">
-                    <Cart
-                      onCart={this.onCart}
-                      products={this.state.products}
-                      showCart={this.state.showCart}
-                      handleOpenModal={this.handleModal}
-                      handleRemoveCart={this.handleRemoveCart}
-                    />
-                  </div>
-                  <div className="col-12">
-                    <Route path="/about" component={ContentDelivery} />
-                    <Route
-                      path="/shop"
-                      render={() => (
-                        <ProductsListWithData
-                          handleAddCart={this.handleAddCart}
-                        />
-                      )}
-                    />
-                    <Route path="/admin" component={MutationProduct} />
-                  </div>
+            {/* <Switch location={this.props.location}> */}
+            <div
+              className={
+                this.state.showCart ? "home-content showCart" : "home-content"
+              }
+            >
+              <Route exact path="/" component={Home} />
+              {/* <Home /> */}
+              <div className="container-fluid content-body">
+                <div className="col-12">
+                  <Cart
+                    onCart={this.onCart}
+                    products={this.state.products}
+                    showCart={this.state.showCart}
+                    handleOpenModal={this.handleModal}
+                    handleRemoveCart={this.handleRemoveCart}
+                  />
+                </div>
+                <div className="col-12">
+                  {/* <ContentDelivery /> */}
+                  <Route path="/about" component={ContentDelivery} />
+                  <Route
+                    path="/shop"
+                    render={() => (
+                      <ProductsListWithData
+                        handleAddCart={this.handleAddCart}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/product/:id"
+                    component={ProductDetailWithData}
+                  />
+                  <Route path="/admin" component={MutationProduct} />
                 </div>
               </div>
-            </Switch>
+            </div>
+            {/* </Switch> */}
             <Footer />
           </div>
         </BrowserRouter>

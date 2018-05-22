@@ -1,72 +1,52 @@
 .content-shop {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    position: relative;
-    font-family: 'Quicksand', sans-serif!important;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  position: relative;
+  font-family: "Quicksand", sans-serif !important;
 }
 
 .thumbnail p {
-    font-size: 20px;
-    color: rgb(88, 88, 88);
+  font-size: 20px;
+  color: rgb(88, 88, 88);
+  margin-bottom: 0;
+  font-family: "Rajdhani", sans-serif !important;
+}
+
+.thumbnail a > img {
+  height: 250px;
 }
 
 .thumbnail button {
-    font-size: 15px;
-    background-color: rgb(255, 136, 128) !important;
-    border: rgb(255, 136, 128) !important;
-    font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  background-color: rgb(255, 136, 128) !important;
+  border: rgb(255, 136, 128) !important;
+  font-family: "Rajdhani", sans-serif;
 }
 
 .jumbotron {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .jumbotron h1 {
-    text-align: center;
-    color: rgb(88, 88, 88);
+  text-align: center;
+  color: rgb(88, 88, 88);
 }
 
 .jumbotron h3 {
-    text-align: center;
-    color: rgb(160, 160, 160);
+  text-align: center;
+  color: rgb(160, 160, 160);
 }
-
 
 .row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    padding: 0 4px;
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
 }
 
-/* Create four equal columns that sits next to each other */
-.column {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
-}
-
-.column img {
-    margin-top: 8px;
-    vertical-align: middle;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-    .column {
-        -ms-flex: 50%;
-        flex: 50%;
-        max-width: 50%;
-    }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        -ms-flex: 100%;
-        flex: 100%;
-        max-width: 100%;
-    }
+@media screen and (max-width: 768px) {
+  .thumbnail a > img {
+    height: auto;
+  }
 }

@@ -2,6 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import "./ProductsListWithData.css";
+import { BrowserRouter, NavLink } from "react-router-dom";
 
 const productsListQuery = gql`
   query ProductListQuery {
@@ -35,27 +36,14 @@ const ProductsListWithData = props => (
           </div>
           <div className="row" id="product-thumb">
             {data.products.map((product, index) => (
-              <div className="col-4 text-center">
-                <div className="thumbnail img-circle">
-                  <img src={product.imagePath[0]} alt={product.title[0]} />
+              <div className="col-lg-3 col-md-6 col-sm-12 text-center">
+                <div className="thumbnail">
+                  <NavLink to={"product/" + product.id}>
+                    <img src={product.imagePath[0]} alt={product.title[0]} />
+                  </NavLink>
                   <div className="caption">
                     <p>{product.title[0]}</p>
-                    {product.title.map(
-                      (x, i) =>
-                        i !== 0 ? (
-                          <p>
-                            {" "}
-                            x={x}, i={i}{" "}
-                          </p>
-                        ) : null
-                    )}
                   </div>
-                  <button
-                    className="btn btn-primary add-cart-button"
-                    onClick={() => this.props.handleAddCart(product)}
-                  >
-                    Add Cart
-                  </button>
                 </div>
               </div>
             ))}

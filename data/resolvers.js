@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-
 const prepare = o => {
   o._id = o._id.toString();
   return o;

@@ -3,13 +3,14 @@ import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
 import { confirmAlert } from "react-confirm-alert";
 import "./MutationProduct.css";
+import AnimatedWrapper from "./AnimatedWrapper";
 
 const CreateProductMutation = gql`
   mutation createProduct(
     $imagePath: [String]!
     $title: [String]!
     $description: String!
-    $price: [Float]!
+    $price: [String]!
     $checkedMatchPrice: Boolean!
   ) {
     createProduct(
@@ -33,7 +34,7 @@ const UpdateProductMutation = gql`
     $imagePath: [String]!
     $title: [String]!
     $description: String!
-    $price: [Float]!
+    $price: [String]!
     $checkedMatchPrice: Boolean!
   ) {
     updateProduct(
@@ -227,6 +228,13 @@ class MutationProduct extends Component {
                       padding: 30px;
                     }
 
+                    .form-group textarea {
+                      
+                      overflow: hidden;
+                      min-height: 200px;
+                      max-height: 300px;
+                    }
+
                     #products-data .row {
                         border-bottom: 1px solid gray;
                         padding-bottom: 30px;
@@ -286,7 +294,7 @@ class MutationProduct extends Component {
                         </div>
                         <div className="form-group">
                           <label for="inputAddress">description</label>
-                          <input
+                          <textarea
                             type="text"
                             className="form-control"
                             defaultValue={product.description}
@@ -404,5 +412,4 @@ class MutationProduct extends Component {
     );
   }
 }
-
 export default MutationProduct;
