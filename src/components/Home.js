@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import AnimatedWrapper from "./AnimatedWrapper";
+import ContentDelivery from "./ContentDelivery";
+import ProductsListWithData from "./ProductsListWithData";
 
 const CarouselContent = () => {
   return (
@@ -34,51 +36,55 @@ const Overlay = () => {
 class Home extends Component {
   render() {
     return (
-      <div className="home-single-page transition-item">
-        <div
-          id="carousel-home"
-          className="carousel carousel-fullscreen slide carousel-fade"
-          data-ride="carousel"
-          data-interval="5000"
-          data-pause="null"
-        >
-          <div className="carousel-inner" role="listbox">
-            <div className="item one active">
-              {" "}
-              <CarouselContent />{" "}
+      <React.Fragment>
+        <div className="home-single-page transition-item">
+          <div
+            id="carousel-home"
+            className="carousel carousel-fullscreen slide carousel-fade"
+            data-ride="carousel"
+            data-interval="5000"
+            data-pause="null"
+          >
+            <div className="carousel-inner" role="listbox">
+              <div className="item one active">
+                {" "}
+                <CarouselContent />{" "}
+              </div>
+              <div className="item two">
+                {" "}
+                <CarouselContent />{" "}
+              </div>
+              <div className="item three">
+                {" "}
+                <CarouselContent />{" "}
+              </div>
+              <div className="item four">
+                {" "}
+                <CarouselContent />{" "}
+              </div>
+              <div className="item five">
+                {" "}
+                <CarouselContent />{" "}
+              </div>
             </div>
-            <div className="item two">
-              {" "}
-              <CarouselContent />{" "}
-            </div>
-            <div className="item three">
-              {" "}
-              <CarouselContent />{" "}
-            </div>
-            <div className="item four">
-              {" "}
-              <CarouselContent />{" "}
-            </div>
-            <div className="item five">
-              {" "}
-              <CarouselContent />{" "}
-            </div>
-          </div>
 
-          <div className="home-social">
-            <a
-              href="http://instagram.com/miruku_ottawa"
-              target="_blank"
-              className="fa fa-instagram fa-3x social-icon"
-            />&emsp;&emsp;
-            <a
-              href="https://www.facebook.com/MirukuOttawa"
-              target="_blank"
-              className="fa fa-facebook-square fa-3x social-icon"
-            />
+            <div className="home-social">
+              <a
+                href="http://instagram.com/miruku_ottawa"
+                target="_blank"
+                className="fa fa-instagram fa-3x social-icon"
+              />&emsp;&emsp;
+              <a
+                href="https://www.facebook.com/MirukuOttawa"
+                target="_blank"
+                className="fa fa-facebook-square fa-3x social-icon"
+              />
+            </div>
           </div>
         </div>
-      </div>
+        <ProductsListWithData />
+        <ContentDelivery />
+      </React.Fragment>
     );
   }
 }

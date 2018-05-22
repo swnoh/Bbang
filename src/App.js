@@ -77,44 +77,46 @@ class App extends Component {
               handleRemoveCart={this.handleRemoveCart}
               handleInitialCart={this.handleInitialCart}
             />
-            {/* <Switch location={this.props.location}> */}
-            <div
-              className={
-                this.state.showCart ? "home-content showCart" : "home-content"
-              }
-            >
-              <Route exact path="/" component={Home} />
-              {/* <Home /> */}
-              <div className="container-fluid content-body">
-                <div className="col-12">
-                  <Cart
-                    onCart={this.onCart}
-                    products={this.state.products}
-                    showCart={this.state.showCart}
-                    handleOpenModal={this.handleModal}
-                    handleRemoveCart={this.handleRemoveCart}
-                  />
-                </div>
-                <div className="col-12">
-                  {/* <ContentDelivery /> */}
-                  <Route path="/about" component={ContentDelivery} />
-                  <Route
-                    path="/shop"
-                    render={() => (
-                      <ProductsListWithData
-                        handleAddCart={this.handleAddCart}
-                      />
-                    )}
-                  />
-                  <Route
-                    path="/product/:id"
-                    component={ProductDetailWithData}
-                  />
-                  <Route path="/admin" component={MutationProduct} />
+            <Switch>
+              <div
+                className={
+                  this.state.showCart ? "home-content showCart" : "home-content"
+                }
+              >
+                <Route exact path="/" component={Home} />
+                {/* <Home /> */}
+                <div className="container-fluid content-body">
+                  <div className="col-12">
+                    <Cart
+                      onCart={this.onCart}
+                      products={this.state.products}
+                      showCart={this.state.showCart}
+                      handleOpenModal={this.handleModal}
+                      handleRemoveCart={this.handleRemoveCart}
+                    />
+                  </div>
+                  <div className="col-12">
+                    {/* <ProductsListWithData />
+                    <ContentDelivery /> */}
+                    <Route path="/about" component={ContentDelivery} />
+                    <Route
+                      path="/shop"
+                      render={() => (
+                        <ProductsListWithData
+                          handleAddCart={this.handleAddCart}
+                        />
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/product/:id"
+                      component={ProductDetailWithData}
+                    />
+                    <Route exact path="/admin" component={MutationProduct} />
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* </Switch> */}
+            </Switch>
             <Footer />
           </div>
         </BrowserRouter>
