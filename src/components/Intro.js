@@ -5,7 +5,7 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
-import "./ContentDelivery.css";
+import "./Intro.css";
 import Footer from "./Footer";
 
 const MapComponent = withScriptjs(
@@ -23,7 +23,7 @@ const MapComponent = withScriptjs(
   })
 );
 
-class ContentDelivery extends Component {
+class Intro extends Component {
   render() {
     return (
       <div className="container content-delivery transition-item">
@@ -72,4 +72,4 @@ class ContentDelivery extends Component {
   }
 }
 
-export default ContentDelivery;
+export default Intro;

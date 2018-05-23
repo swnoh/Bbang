@@ -4,10 +4,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
-import ContentDelivery from "./components/ContentDelivery";
-import ProductDetailWithData from "./components/ProductDetailWithData.js";
-import ProductsListWithData from "./components/ProductsListWithData";
-import MutationProduct from "./components/MutationProduct";
+import Intro from "./components/Intro";
+import ProductDetail from "./components/ProductDetail.js";
+import ProductsList from "./components/ProductsList";
+import Admin from "./components/Admin";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
@@ -26,7 +26,7 @@ class App extends Component {
     this.state = {
       showCart: false,
       products: [],
-      setOpen: false
+      CheckoutOpen: false
     };
   }
 
@@ -50,7 +50,7 @@ class App extends Component {
   };
 
   handleModal = () => {
-    this.setState({ setOpen: !this.state.setOpen });
+    this.setState({ CheckoutOpen: !this.state.CheckoutOpen });
   };
 
   onCart = () => {
@@ -71,8 +71,8 @@ class App extends Component {
               offCart={this.offCart}
               products={this.state.products}
               showCart={this.state.showCart}
-              setOpen={this.state.setOpen}
-              headerSticky={"sticky"}
+              CheckoutOpen={this.state.CheckoutOpen}
+              stickyHeader={"sticky"}
               handleModal={this.handleModal}
               handleRemoveCart={this.handleRemoveCart}
               handleInitialCart={this.handleInitialCart}
@@ -96,23 +96,21 @@ class App extends Component {
                     />
                   </div>
                   <div className="col-12">
-                    {/* <ProductsListWithData />
-                    <ContentDelivery /> */}
-                    <Route path="/about" component={ContentDelivery} />
+                    {/* <ProductsList />
+                    <Intro /> */}
+                    <Route path="/about" component={Intro} />
                     <Route
                       path="/shop"
                       render={() => (
-                        <ProductsListWithData
-                          handleAddCart={this.handleAddCart}
-                        />
+                        <ProductsList handleAddCart={this.handleAddCart} />
                       )}
                     />
                     <Route
                       exact
                       path="/product/:id"
-                      component={ProductDetailWithData}
+                      component={ProductDetail}
                     />
-                    <Route exact path="/admin" component={MutationProduct} />
+                    <Route exact path="/admin" component={Admin} />
                   </div>
                 </div>
               </div>

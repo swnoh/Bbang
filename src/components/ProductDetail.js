@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import "./ProductDetailWithData.css";
+import "./ProductDetail.css";
 import { Redirect } from "react-router-dom";
 
 const productsListQuery = gql`
@@ -16,7 +16,7 @@ const productsListQuery = gql`
   }
 `;
 
-class ProductDetailListWithData extends Component {
+class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
@@ -292,4 +292,4 @@ class ProductDetailListWithData extends Component {
 //   </div>
 // </div>
 
-export default ProductDetailListWithData;
+export default ProductDetail;

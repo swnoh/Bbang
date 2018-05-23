@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import AnimatedWrapper from "./AnimatedWrapper";
-import ContentDelivery from "./ContentDelivery";
-import ProductsListWithData from "./ProductsListWithData";
+import Intro from "./Intro";
+import ProductsList from "./ProductsList";
 
 const CarouselContent = () => {
   return (
@@ -82,8 +82,8 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <ProductsListWithData />
-        <ContentDelivery />
+        <ProductsList />
+        <Intro />
       </React.Fragment>
     );
   }

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import "./ModalBackground.css";
+import "./ModalCheckout.css";
 import Checkout from "./Checkout";
 
-class ModalBackground extends Component {
+class ModalCheckout extends Component {
   render() {
     return (
       <div className="ModalBackground">
-        <div className={this.props.setOpen ? "overlay open" : "overlay"}>
+        <div className={this.props.CheckoutOpen ? "overlay open" : "overlay"}>
           <div
             className={
-              this.props.setOpen ? "overlay-header open" : "overlay-header"
+              this.props.CheckoutOpen ? "overlay-header open" : "overlay-header"
             }
           >
             <a className="ml-5 pl-5" id="top-logo" href="">
@@ -22,7 +22,9 @@ class ModalBackground extends Component {
 
           <div
             className={
-              this.props.setOpen ? "overlay-content open" : "overlay-content"
+              this.props.CheckoutOpen
+                ? "overlay-content open"
+                : "overlay-content"
             }
           >
             <Checkout
@@ -33,7 +35,7 @@ class ModalBackground extends Component {
           </div>
           <div
             className={
-              this.props.setOpen ? "overlay-footer open" : "overlay-footer"
+              this.props.CheckoutOpen ? "overlay-footer open" : "overlay-footer"
             }
           >
             <a onClick={this.props.handleModal}>
@@ -46,4 +48,4 @@ class ModalBackground extends Component {
   }
 }
 
-export default ModalBackground;
+export default ModalCheckout;

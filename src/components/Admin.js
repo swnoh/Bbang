@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
 import { confirmAlert } from "react-confirm-alert";
-import "./MutationProduct.css";
+import "./Admin.css";
 import AnimatedWrapper from "./AnimatedWrapper";
 
 const CreateProductMutation = gql`
@@ -75,7 +75,7 @@ const productsListQuery = gql`
   }
 `;
 
-class MutationProduct extends Component {
+class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -412,4 +412,4 @@ class MutationProduct extends Component {
     );
   }
 }
-export default MutationProduct;
+export default Admin;

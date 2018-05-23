@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import "./ProductsListWithData.css";
+import "./ProductsList.css";
 import { BrowserRouter, NavLink } from "react-router-dom";
 
 const productsListQuery = gql`
@@ -16,7 +16,7 @@ const productsListQuery = gql`
   }
 `;
 
-const ProductsListWithData = props => (
+const ProductsList = props => (
   <Query query={productsListQuery}>
     {({ loading, error, data }) => {
       if (loading) {
@@ -54,4 +54,4 @@ const ProductsListWithData = props => (
   </Query>
 );
 
-export default ProductsListWithData;
+export default ProductsList;

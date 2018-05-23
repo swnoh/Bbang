@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import ModalBackground from "./ModalBackground";
+import ModalCheckout from "./ModalCheckout";
 import PlaceNewOrder from "./PlaceNewOrder";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,7 +16,7 @@ class Header extends Component {
       location: "",
       comment: "",
       isSubmitForm: false,
-      headerSticky: ""
+      stickyHeader: ""
     };
   }
 
@@ -63,7 +63,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className={this.props.headerSticky}>
+      <header className={this.props.stickyHeader}>
         <nav className="navbar navbar-expand-md navbar-dark">
           <button
             className="navbar-toggler"
@@ -100,8 +100,8 @@ class Header extends Component {
           </div>
         </nav>
 
-        <ModalBackground
-          setOpen={this.props.setOpen}
+        <ModalCheckout
+          CheckoutOpen={this.props.CheckoutOpen}
           handleModal={this.props.handleModal}
           submitOrderForm={this.submitOrderForm}
           products={this.props.products}
