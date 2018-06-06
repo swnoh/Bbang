@@ -14,7 +14,7 @@ header {
 
 header.sticky {
   position: fixed;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
   background-color: rgb(221, 221, 221);
   background: var(--background-header);
   box-shadow: 0 0 7px 0 rgb(43, 43, 43);
@@ -74,7 +74,7 @@ header nav li:last-child {
   top: 20px !important;
 }
 
-header nav .header-link a:first-child {
+#nav-brand {
   font-family: "Lobster" !important;
   font-size: 20px;
 }
@@ -87,12 +87,6 @@ header nav .header-link a:first-child {
 
 .header-link a {
   margin: 0 10px;
-}
-
-.header-link a:first-child {
-  margin: 0 60px;
-  color: white;
-  font-size: 1em;
 }
 
 #header-cart {

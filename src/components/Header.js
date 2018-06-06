@@ -4,7 +4,21 @@ import ModalCheckout from "./ModalCheckout";
 import PlaceNewOrder from "./PlaceNewOrder";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+// import {
+//   Collapse,
+//   Navbar,
+//   NavbarToggler,
+//   NavbarBrand,
+//   Nav,
+//   NavLink,
+//   NavItem,
+//   UncontrolledDropdown,
+//   DropdownToggle,
+//   DropdownMenu,
+//   DropdownItem
+// } from "reactstrap";
+// import Scrollspy from "react-scrollspy";
 
 class Header extends Component {
   constructor() {
@@ -16,12 +30,19 @@ class Header extends Component {
       location: "",
       comment: "",
       isSubmitForm: false,
-      stickyHeader: ""
+      stickyHeader: "",
+      collapsed: true
     };
   }
 
   static defaultProps = {
     onCart() {}
+  };
+
+  toggleNavbar = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   };
 
   submitOrderForm = orderDetail => {
@@ -75,14 +96,21 @@ class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav mr-auto header-link">
-              <NavLink exact to="/">
-                Miruku
-              </NavLink>
-              <NavLink exact to="/">
-                Home
-              </NavLink>
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/shop">Shop</NavLink>
+              {/* <li>
+                <a href="#home-single-page" id="nav-brand">
+                  Miruku
+                </a>
+              </li> */}
+              <NavLink to="/">Miruku</NavLink>
+              {/* <li>
+                <a href="#carousel-home">Home</a>
+              </li>
+              <li>
+                <a href="#content-shop">Shop</a>
+              </li>
+              <li>
+                <a href="#content-intro">About</a>
+              </li> */}
             </ul>
             <ul className="navbar-nav ml-auto" id="header-cart-items">
               <li>
@@ -99,6 +127,36 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
+        {/* <Navbar color="faded" dark expand="md">
+          <NavbarBrand href="/">Miruku</NavbarBrand>
+          <NavbarToggler onClick={this.toggleNavbar} />
+          <Collapse isOpen={this.state.collapsed} navbar>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#content-shop">Shop</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#content-intro">About</NavLink>
+              </NavItem>
+            </Nav>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink onClick={this.props.onCart} id="header-cart">
+                  <i className="fa fa-shopping-cart" /> Cart{" "}
+                  <span className="badge"> {this.props.products.length} </span>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink onClick={this.props.handleModal} id="checkout">
+                  Checkout
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar> */}
 
         <ModalCheckout
           CheckoutOpen={this.props.CheckoutOpen}

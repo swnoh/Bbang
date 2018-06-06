@@ -22,10 +22,9 @@ const CartList = ({ products, handleRemoveCart }) => {
 };
 
 const CartTotal = ({ products }) => {
-  let priceArr = 0;
-
   let totalPrice = products
     .map(product => {
+      let priceArr = 0;
       return (priceArr += product.price);
     })
     .reduce((a, b) => a + b, 0);

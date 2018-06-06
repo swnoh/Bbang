@@ -30,7 +30,7 @@ class App extends Component {
     };
   }
 
-  handleAddCart = ({ product }) => {
+  handleAddCart = product => {
     this.setState({
       products: [...this.state.products, product],
       showCart: true
@@ -98,17 +98,22 @@ class App extends Component {
                   <div className="col-12">
                     {/* <ProductsList />
                     <Intro /> */}
-                    <Route path="/about" component={Intro} />
+                    {/* <Route path="/about" component={Intro} />
                     <Route
                       path="/shop"
                       render={() => (
                         <ProductsList handleAddCart={this.handleAddCart} />
                       )}
-                    />
+                    /> */}
                     <Route
                       exact
                       path="/product/:id"
-                      component={ProductDetail}
+                      component={props => (
+                        <ProductDetail
+                          match={props.match}
+                          handleAddCart={this.handleAddCart}
+                        />
+                      )}
                     />
                     <Route exact path="/admin" component={Admin} />
                   </div>

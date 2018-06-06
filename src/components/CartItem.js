@@ -3,18 +3,21 @@ import "./CartItem.css";
 
 class CartItem extends Component {
   render() {
-    const { imagePath, title, price, onClick } = this.props;
+    const {
+      imagePath,
+      selectedOption1,
+      selectedOption2,
+      price,
+      onClick
+    } = this.props;
     return (
       <li className="shopping-cart-items">
-        <img src={imagePath} alt={title} />
+        <img src={imagePath} alt={selectedOption1} />
         <div className="shopping-cart-items-info">
-          <strong>{title}</strong>
+          <strong>{selectedOption1}</strong>
           <ul>
-            <li>1 bottle (350ml)</li>
+            <li>{selectedOption2}</li>
             <li>${price}</li>
-            <li>
-              A whole cake needs to be picked up at only 1280 Baseline Rd.
-            </li>
           </ul>
         </div>
         <a onClick={onClick}>

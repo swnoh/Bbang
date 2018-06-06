@@ -5,7 +5,6 @@ body {
   /* font-family: 'Quicksand', sans-serif;
     font-family: 'Josefin Sans', sans-serif;
     font-family: 'Rubik', sans-serif!important;
-    font-family: 'Abel', sans-serif;
     font-family: 'Rajdhani', sans-serif; */
 }
 
@@ -14,15 +13,15 @@ body {
   background-color: var(--background-main-page);
 }
 
-.home-content {
+/* .home-content {
   transition: margin-right 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   margin-right: 0;
-}
+} */
 
-.home-content.showCart {
+/* .home-content.showCart {
   transition: margin-right 0.5s cubic-bezier(0.39, 0.58, 0.57, 1);
   margin-right: 20vw;
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .home-content {

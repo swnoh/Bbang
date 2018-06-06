@@ -2,7 +2,6 @@
   font-family: "Quicksand", sans-serif;
   font-family: "Josefin Sans", sans-serif !important;
   font-family: "Rubik", sans-serif;
-  font-family: "Lobster", cursive;
   font-family: "Abel", sans-serif;
   font-family: "Rajdhani", sans-serif;
 }
@@ -58,12 +57,6 @@
 .three {
   background-image: url("/img/home-slide-3.jpg");
 }
-.four {
-  background-image: url("/img/home-slide-4.jpg");
-}
-.five {
-  background-image: url("/img/home-slide-5.jpg");
-}
 
 .item .overlay {
   position: absolute;
@@ -78,14 +71,14 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .carousel-caption h1,
 .carousel-caption h2 {
   color: rgb(195, 195, 195);
-  /* font-family: 'Aldrich', sans-serif; */
-  font-family: "Rock Salt", cursive;
+  letter-spacing: 5px;
+  font-family: "Rubik", sans-serif;
 }
 
 .carousel-caption p {

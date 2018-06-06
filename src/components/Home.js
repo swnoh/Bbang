@@ -58,14 +58,6 @@ class Home extends Component {
                 {" "}
                 <CarouselContent />{" "}
               </div>
-              <div className="item four">
-                {" "}
-                <CarouselContent />{" "}
-              </div>
-              <div className="item five">
-                {" "}
-                <CarouselContent />{" "}
-              </div>
             </div>
 
             <div className="home-social">

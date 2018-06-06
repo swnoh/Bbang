@@ -1,36 +1,36 @@
 .footer {
-    background-color: var(--background-footer) !important;
-    text-align: left;
-    font-size: 15px;
-    z-index: 5;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-    font-family: 'Rajdhani', sans-serif;
-    letter-spacing: 2px;
+  background-color: var(--background-footer) !important;
+  text-align: left;
+  font-size: 15px;
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 2px;
+  height: 70px;
 }
 
-.footer .copyright p{
-    color: rgb(97, 97, 97) !important;
-    padding-left: 3rem;
-    margin-top: 1rem;
+.footer .copyright p {
+  color: rgb(97, 97, 97) !important;
+  padding-left: 3rem;
+  margin-top: 1rem;
 }
 
 .footer-social {
-    float: right;
-    padding-right: 50px;
-    padding-top: 10px;
+  float: right;
+  padding-right: 50px;
+  padding-top: 10px;
 }
 
 .footer-social a {
-    color: rgb(177, 177, 177);
+  color: rgb(177, 177, 177);
 }
 
 .footer-social a:hover {
-    color: white;
+  color: white;
 }
 
 .footer-social li {
-    display: inline;
-    padding-inline-start: 20px;
+  display: inline;
+  padding-inline-start: 20px;
 }

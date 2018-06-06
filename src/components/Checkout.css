@@ -98,7 +98,7 @@
 }
 
 .form-group.row {
-  margin: 30px 0;
+  margin: 30px 0 10px 0;
 }
 .form-check-label {
   margin: 10px 0;
@@ -218,4 +218,8 @@ legend {
 
 .react-confirm-alert-button-group > button:first-child {
   background: rgb(221, 44, 44);
+}
+
+#exampleTextarea {
+  height: 70px !important;
 }
