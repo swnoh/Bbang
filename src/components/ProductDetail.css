@@ -1,39 +1,109 @@
-#accordion-menu {
-  padding-top: 100px;
-}
-
 .product-detail {
-  padding-top: 80px;
+  padding-top: 100px;
   padding-bottom: 50px;
   min-height: 93vh;
 }
 
+.product-detail .carousel {
+  padding-top: 35px;
+}
+
 .product-detail h1 {
   margin-left: 20px;
-  color: rgb(83, 69, 71);
+  color: rgb(80, 80, 80);
 }
+
 .form-group > h1 {
-  letter-spacing: 4px;
-  color: #b5b5b5;
-  font-weight: 400;
-  margin-bottom: 42px;
-  font: 30px "Gotham A", "Gotham B", sans-serif;
+  letter-spacing: 2px;
+  color: #707070;
+  font-weight: 600;
+  margin-bottom: 30px;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  font-family: "Dosis", sans-serif !important;
 }
+
 .product-detail h2 {
   color: rgb(61, 61, 61);
 }
-.product-detail img {
-  height: 350px;
-  padding: 30px;
+
+.carousel .item img {
+  margin: 0 auto;
+  height: 450px;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+
+#productCarousel {
+  margin-bottom: 50px;
+}
+
+#productCarousel .carousel-inner {
+  border-radius: 40px !important;
+  overflow: hidden;
+}
+
+.product-description {
+  letter-spacing: 1px;
+  font-family: "Nunito", sans-serif !important;
+}
+
+.product-description h1 {
+  font-size: 20px;
+  margin-left: 0;
+  font-weight: 600;
+}
+
+.product-description h2 {
+  font-size: 15px;
+  padding-bottom: 30px;
 }
 
 .product-detail-btn-menu {
-  padding: 15px !important;
+  padding: 10px !important;
   margin: 15px !important;
-  border-radius: 3px !important;
+  border-radius: 0 !important;
   font-size: 1.5em !important;
+  border: 0 !important;
+  border-bottom: 1px solid !important;
+  color: gray !important;
+}
+
+.product-detail-btn-menu.option1:hover {
+  background-color: var(--button-lightSeaGreen) !important;
+  border-color: var(--button-lightSeaGreen) !important;
+  color: white !important;
+}
+
+.product-detail-btn-menu.option1.active {
+  background-color: var(--button-lightSeaGreen) !important;
+  border-color: var(--button-lightSeaGreen) !important;
+  color: white !important;
+  outline-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+}
+
+.product-detail-btn-menu.option2:hover {
+  background-color: var(--button-salmon) !important;
+  border-color: var(--button-salmon) !important;
+  color: white !important;
+}
+
+.product-detail-btn-menu.option2.active {
+  background-color: var(--button-salmon) !important;
+  border-color: var(--button-salmon) !important;
+  color: white !important;
+  outline-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none !important;
+}
+
+.btn-product-option1 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 .product-detail .col-form-label {
@@ -41,7 +111,28 @@
 }
 
 .product-detail-price {
+  width: 100%;
   font-size: 30px;
+  letter-spacing: 1px;
+  font-family: "Rajdhani", sans-serif !important;
+}
+
+.product-detail-price > h2 {
+  font-weight: bold;
+}
+
+.product-detail-selection {
+  padding: 15px 0 15px 0;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+
+.product-detail-selection h2 {
+  font-size: 0.6em;
+}
+
+.product-detail-price h3 {
+  color: red;
+  padding: 10px 0 10px 0;
 }
 
 .btn-group {
@@ -51,15 +142,46 @@
   /* border-radius: 20px; */
 }
 
-#button-add-cart {
-  height: 50px;
+.inproper-selection {
+  color: red;
 }
 
-#button-add-cart i,
-span {
+#button-add-cart {
+  height: 50px;
+  font-family: "Rajdhani", sans-serif !important;
+  font-size: 1.6em;
+}
+
+.showAddCartButton {
+  background-color: #1b1b1b;
+  color: #e5dfd9;
+}
+
+/* .showAddCartButton:hover {
+  background-color: #464646 !important;
+  color: #e5dfd9;
+} */
+
+#button-add-cart:hover {
+  color: #e5dfd9;
+  background-color: rgb(71, 71, 71);
+}
+
+#button-add-cart i {
   font-size: 1.2em;
+}
+
+#button-add-cart span {
+  font-weight: 500;
+  font-family: "Rajdhani", sans-serif !important;
 }
 
 #addCartText {
   margin-left: 10px;
+}
+
+@media (max-width: 576px) {
+  .carousel .item img {
+    height: 250px;
+  }
 }

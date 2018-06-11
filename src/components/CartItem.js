@@ -14,7 +14,15 @@ class CartItem extends Component {
       <li className="shopping-cart-items">
         <img src={imagePath} alt={selectedOption1} />
         <div className="shopping-cart-items-info">
-          <strong>{selectedOption1}</strong>
+          {typeof selectedOption1 !== "string" ? (
+            selectedOption1.map((option, index) => (
+              <strong>
+                {index === selectedOption1.length - 1 ? option : option + " | "}
+              </strong>
+            ))
+          ) : (
+            <strong>{selectedOption1}</strong>
+          )}
           <ul>
             <li>{selectedOption2}</li>
             <li>${price}</li>

@@ -20,23 +20,32 @@ class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
-      imagePath: "",
-      selectedOption1: "",
+      selectedOption1: [],
       selectedOption2: "",
-      selectedPrice: 0
+      selectedPrice: 0,
+      optionidx: 0,
+      inputType: "radio",
+      isChosen: true
     };
+    console.log("constructor");
     this.imgRef = React.createRef();
   }
 
   handleSelectedOption = event => {
-    console.log(event.target.dataset.price);
-
     let selections = event.target.dataset;
+    let checked = event.target.childNodes[0].checked;
+    let inputType = event.target.childNodes[0].type;
     this.setState(prevState => {
       return {
         selectedOption1:
           selections.option1 !== undefined
-            ? selections.option1
+            ? checked
+              ? inputType === "radio"
+                ? selections.option1
+                : [...this.state.selectedOption1, selections.option1]
+              : this.state.selectedOption1.filter(
+                  selectedOption1 => selectedOption1 !== selections.option1
+                )
             : prevState.selectedOption1,
         selectedOption2:
           selections.option2 !== undefined
@@ -45,7 +54,16 @@ class ProductDetail extends Component {
         selectedPrice:
           selections.price !== undefined
             ? selections.price
-            : prevState.selectedPrice
+            : prevState.selectedPrice,
+        optionidx:
+          selections.optionidx !== undefined
+            ? parseInt(selections.optionidx, 10)
+            : prevState.optionidx,
+        inputType:
+          inputType !== undefined && selections.option1 !== undefined
+            ? inputType
+            : prevState.inputType,
+        isChosen: true
       };
     });
   };
@@ -80,10 +98,33 @@ class ProductDetail extends Component {
       selectedOption2: this.state.selectedOption2,
       price: parseFloat(this.state.selectedPrice)
     };
-    this.state.selectedPrice &&
-      this.state.selectedOption1 &&
+
+    let choose = this.state.selectedOption2;
+
+    let isChosen =
+      this.state.inputType === "radio" ||
+      this.state.selectedOption1.length ===
+        parseInt(
+          choose.slice(
+            choose.indexOf("choose") + 6,
+            choose.indexOf("choose") + 9
+          ),
+          10
+        ) ||
+      choose.indexOf("variety") > -1;
+
+    (!isChosen || this.state.selectedOption1.length === 0) &&
+      this.setState({ isChosen: false });
+
+    isChosen &&
+      this.state.selectedOption1.length > 0 &&
+      this.state.selectedPrice &&
       this.props.handleAddCart(product);
   };
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
 
   render() {
     return (
@@ -111,29 +152,67 @@ class ProductDetail extends Component {
           return (
             <div className="container product-detail">
               <div className="col-sm-12 col-md-8 col-xl-7">
-                {prod.imagePath.map((img, index) => {
-                  return index === 0 ? (
-                    <img src={img} alt={img} ref={this.imgRef} />
-                  ) : (
-                    <img src={img} alt={img} />
-                  );
-                })}
+                <div
+                  id="productCarousel"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    {prod.title.length - 1 > prod.imagePath.length
+                      ? prod.imagePath.map((img, index) => {
+                          return index === 0 ? (
+                            <div class="item active">
+                              <img src={img} alt={img} ref={this.imgRef} />
+                            </div>
+                          ) : (
+                            <div class="item">
+                              <img src={img} alt={img} />
+                            </div>
+                          );
+                        })
+                      : prod.imagePath.map((img, index) => {
+                          return index === this.state.optionidx ? (
+                            <div class="item active">
+                              <img src={img} alt={img} ref={this.imgRef} />
+                            </div>
+                          ) : (
+                            <div class="item">
+                              <img src={img} alt={img} />
+                            </div>
+                          );
+                        })}
+                  </div>
+                  <a
+                    class="carousel-control left"
+                    href="#productCarousel"
+                    data-slide="prev"
+                  >
+                    <span class="glyphicon glyphicon-chevron-left" />
+                  </a>
+                  <a
+                    class="carousel-control right"
+                    href="#productCarousel"
+                    data-slide="next"
+                  >
+                    <span class="glyphicon glyphicon-chevron-right" />
+                  </a>
+                </div>
 
-                <div dangerouslySetInnerHTML={{ __html: prod.description }} />
+                <div
+                  className="product-description"
+                  dangerouslySetInnerHTML={{ __html: prod.description }}
+                />
               </div>
               <form
                 className="form-product-detail col-sm-12 col-md-4 col-xl-5"
                 onSubmit={this.handleAddCart}
               >
-                <div className="form-group row">
+                <div className="form-group row btn-product-option1">
                   <h1>{prod.title[0]}</h1>
                   <br />
-                  {/* <label htmlFor="product-selection" className="col-form-label">
-                    Selection
-                  </label> */}
 
                   <div
-                    className="btn-group btn-group-toggle row"
+                    className="btn-group btn-group-toggle row "
                     data-toggle="buttons"
                     onClick={this.handleSelectedOption}
                   >
@@ -141,16 +220,20 @@ class ProductDetail extends Component {
                       (title, index) =>
                         index !== 0 ? (
                           <label
-                            className="btn btn-outline-info btn-lg product-detail-btn-menu"
+                            className="btn btn-outline-info btn-lg product-detail-btn-menu option1"
                             data-option1={title.split(": ")[0]}
                             data-price={title.split(": ")[1]}
+                            data-optionidx={index - 1}
                           >
                             <input
-                              type="radio"
+                              type={
+                                prod.price[0].indexOf("flavour") > -1
+                                  ? "checkbox"
+                                  : "radio"
+                              }
                               name="options"
                               id="option1"
                               autoComplete="off"
-                              checked
                             />
                             {title.split(": ")[0]}
                           </label>
@@ -160,12 +243,6 @@ class ProductDetail extends Component {
                 </div>
                 {prod.price[0] !== "" && (
                   <div className="form-group row">
-                    {/* <label
-                      htmlFor="product-selection"
-                      className="col-2 col-form-label"
-                    >
-                      Selection
-                    </label> */}
                     <div
                       className="btn-group btn-group-toggle row"
                       data-toggle="buttons"
@@ -173,7 +250,7 @@ class ProductDetail extends Component {
                     >
                       {prod.price.map((price, index) => (
                         <label
-                          className="btn btn-outline-secondary btn-lg product-detail-btn-menu col-12"
+                          className="btn btn-outline-secondary btn-lg product-detail-btn-menu option2"
                           data-option2={price.split(": ")[0]}
                           data-price={price.split(": ")[1]}
                         >
@@ -192,24 +269,46 @@ class ProductDetail extends Component {
 
                 <div className="form-group row">
                   <div className="product-detail-price">
-                    <h2> {this.state.selectedOption1} </h2>
-                    <h2> {this.state.selectedOption2} </h2>
-                    {this.state.selectedPrice !== 0 && (
-                      <h2>Price: $ {this.state.selectedPrice}</h2>
-                    )}{" "}
-                    {/* {prod.price.map(
-                      price => " $" + parseFloat(price).toFixed(2)
-                    )} */}
+                    {typeof this.state.selectedOption1 !== "string" ? (
+                      <h2>
+                        {this.state.selectedOption1.map(
+                          (option, index) =>
+                            index === this.state.selectedOption1.length - 1
+                              ? option
+                              : option + " | "
+                        )}
+                      </h2>
+                    ) : (
+                      <h2>{this.state.selectedOption1}</h2>
+                    )}
+                    <div className="product-detail-selection">
+                      <h2> {this.state.selectedOption2} </h2>
+                      {this.state.selectedPrice !== 0 && (
+                        <h2>Price: $ {this.state.selectedPrice}</h2>
+                      )}
+                    </div>
+                    {!this.state.isChosen && (
+                      <h3>Please select the proper option.</h3>
+                    )}
                   </div>
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-lg btn-block"
+                  className={
+                    "btn btn-lg btn-block " +
+                    (this.state.selectedOption1 &&
+                      this.state.selectedPrice &&
+                      "showAddCartButton")
+                  }
                   id="button-add-cart"
                 >
-                  {" "}
-                  <i className="fa fa-shopping-cart" />
-                  <span id="addCartText">Add Cart</span>
+                  {this.state.selectedOption1 && this.state.selectedPrice ? (
+                    <i className="fa fa-shopping-cart">
+                      <span id="addCartText">ADD TO SHOPPING CART</span>
+                    </i>
+                  ) : (
+                    "Please select an option."
+                  )}
                 </button>
               </form>
             </div>

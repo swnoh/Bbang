@@ -6,14 +6,16 @@ body {
 }
 
 :root {
-  --background-main-page: #f2ecec;
+  --background-main-page: #e7e7e7;
   --background-cart: rgb(240, 240, 240);
-  --background-modal:rgba(0, 0, 0, 0.95);
+  --background-modal: rgba(0, 0, 0, 0.95);
   --background-header: rgb(51, 51, 51);
   --background-footer: rgb(51, 51, 51);
 
   --modal-box: #88888871;
 
   --button-green: rgba(95, 207, 142, 0.582);
+  --button-lightSeaGreen: #20b2aa;
+  --button-salmon: #fa8072;
   --input-focus: rgb(103, 223, 133);
 }

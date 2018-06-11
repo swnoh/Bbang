@@ -2,8 +2,6 @@ header {
   color: #363636;
   padding-top: 0.9vh;
   padding-bottom: 0.9vh;
-  /* padding-left: 60%; */
-  /* padding-right: auto; */
 
   position: fixed;
   display: block;
@@ -25,7 +23,7 @@ header.sticky {
     border-bottom-left-radius: 10px; */
   margin-bottom: 0;
   padding: 0 !important;
-  min-height: 0;
+  min-height: 50px;
   /* min-width: 300px; */
   justify-content: flex-start !important;
   padding-left: 20px !important;
@@ -97,6 +95,9 @@ header nav li:last-child {
 #header-cart-items {
   overflow: hidden;
   white-space: nowrap;
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-family: "Rajdhani", sans-serif;
 }
 
 .badge {

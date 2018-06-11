@@ -13,7 +13,8 @@ const CarouselContent = () => {
         <h1 className="super-heading">ミルク MIRUKU</h1>
         <br />
         <br />
-        <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p>
+        {/* <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p> */}
+        <p className="super-paragraph">Fresh, From Scratch, Orders Only </p>
         <br />
         <ShopLinkButton />
       </div>
@@ -34,6 +35,10 @@ const Overlay = () => {
 };
 
 class Home extends Component {
+  constructor() {
+    super();
+    console.log("home");
+  }
   render() {
     return (
       <React.Fragment>

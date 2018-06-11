@@ -8,12 +8,12 @@
   margin-bottom: 0;
   border-bottom: 1px solid #dbdbdb;
   display: flex;
+  position: relative;
 }
 
 .shopping-cart-items .fa-trash {
-  /* float: right; */
   position: absolute;
-  right: 30px;
+  right: 15px;
   font-size: 20px;
   color: rgb(255, 126, 133);
   cursor: pointer;
