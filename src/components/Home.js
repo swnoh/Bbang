@@ -35,10 +35,6 @@ const Overlay = () => {
 };
 
 class Home extends Component {
-  constructor() {
-    super();
-    console.log("home");
-  }
   render() {
     return (
       <React.Fragment>
