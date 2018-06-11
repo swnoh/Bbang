@@ -27,7 +27,6 @@ class ProductDetail extends Component {
       inputType: "radio",
       isChosen: true
     };
-    console.log("constructor");
     this.imgRef = React.createRef();
   }
 
