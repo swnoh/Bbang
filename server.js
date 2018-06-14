@@ -51,7 +51,7 @@ server.use(
   })
 );
 
-server.get("/", function(req, res) {
+server.get("/test", function(req, res) {
   res.send("This is the Server Page!");
 });
 
