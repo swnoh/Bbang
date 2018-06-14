@@ -51,9 +51,13 @@ server.use(
   })
 );
 
-server.get("/test", function(req, res) {
-  res.send("This is the Server Page!");
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/build/index.html'));
 });
+
+// server.get("/test", function(req, res) {
+//   res.send("This is the Server Page!");
+// });
 
 server.listen(PORT, () =>
   console.log(`GraphQL Server is now running on http://localhost:${PORT}`)
