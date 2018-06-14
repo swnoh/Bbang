@@ -54,12 +54,12 @@ server.use(
 
 server.use(express.static(path.join(__dirname, 'build')));
 
-server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/index.html'));
-});
+// server.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname+'/build/index.html'));
+// });
 
 server.get("/test", function(req, res) {
-  res.send("This is the Server Page!");
+  res.send(`This is the Server Page! ${PORT}`);
 });
 
 server.listen(PORT, () =>
