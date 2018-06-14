@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import AnimatedWrapper from "./AnimatedWrapper";
 import Intro from "./Intro";
 import ProductsList from "./ProductsList";
 
