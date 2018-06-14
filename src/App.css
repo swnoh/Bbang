@@ -13,7 +13,7 @@ body {
   background-color: var(--background-main-page);
 }
 
-.home-content {
+/* .home-content {
   transition: margin-right 0.5s cubic-bezier(0.18, 0.89, 0.32, 1);
   margin-right: 0;
 }
@@ -21,7 +21,7 @@ body {
 .home-content.showCart {
   transition: margin-right 0.5s cubic-bezier(0.19, 0.58, 0.67, 1.15);
   margin-right: 20vw;
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .home-content {
