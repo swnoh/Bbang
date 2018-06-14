@@ -52,10 +52,10 @@ server.use(
   })
 );
 
-server.use(express.static(path.join(__dirname, 'build')));
+server.use(express.static(path.join(__dirname, 'client/build')));
 
 server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/index.html'));
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
 server.listen(PORT, () =>
