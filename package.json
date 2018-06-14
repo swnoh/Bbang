@@ -2,6 +2,7 @@
   "name": "react_bbang",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://protected-caverns-93659.herokuapp.com/",
   "dependencies": {
     "apollo-boost": "^0.1.4",
     "apollo-cache-inmemory": "^1.1.12",
@@ -35,8 +36,7 @@
     "reactstrap": "^6.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "nodemon ./server.js --exec babel-node -e js",
+    "start": "nodemon ./server.js --exec babel-node -e js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
