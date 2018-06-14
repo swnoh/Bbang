@@ -3,7 +3,6 @@ import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
 import { confirmAlert } from "react-confirm-alert";
 import "./Admin.css";
-import AnimatedWrapper from "./AnimatedWrapper";
 
 const CreateProductMutation = gql`
   mutation createProduct(
