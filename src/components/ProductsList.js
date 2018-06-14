@@ -2,8 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import "./ProductsList.css";
-import { BrowserRouter, NavLink } from "react-router-dom";
-import ScrollAnimation from "react-animate-on-scroll";
+import { NavLink } from "react-router-dom";
 
 const productsListQuery = gql`
   query ProductListQuery {

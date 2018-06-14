@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SideBar from "./SideBar";
 import "./Product.css";
 import Swiper from "react-id-swiper";
-import style from "react-id-swiper/src/styles/css/swiper.css";
 import ReactDrawer from "react-drawer";
 import "react-drawer/lib/react-drawer.css";
 

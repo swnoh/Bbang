@@ -4,7 +4,7 @@ import ModalCheckout from "./ModalCheckout";
 import PlaceNewOrder from "./PlaceNewOrder";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import {
 //   Collapse,
 //   Navbar,
