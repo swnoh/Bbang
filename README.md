@@ -3,11 +3,11 @@
   - Backend API = **GraphQL**.
   - Database utilizes a **MongoDB with mlab** .
   - Client-side API requests are generated from **Apollo Client** wrapped components.
-  - The rest of the app sits on **React.js** & **React Router*(V3)** (with Code splitting).
+  - The rest of the app sits on **React.js** & **React Router*(V4)** (with Code splitting).
 
 ## Site Address
  <!-- [Nic Juice 2 Japan](https://d2ezb8t4pwbclo.cloudfront.net). -->
-  - ☝🏼 That site is under **Heavy Development** and may at times, not be working.  Will update here once availability is 100%.
+  - That site is under **Heavy Development** and may at times, not be working.  Will update here once availability is 100%.
 
 ## Splash Preview
 <img src="https://www.dropbox.com/s/yahvrdusdjpv6u4/Screenshot%202018-05-23%20at%2014.04.16.jpg?raw=1" />
