@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import { schema } from "./data/schema";
 
 const express = require("express");
+const path = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
 
@@ -51,9 +52,11 @@ server.use(
   })
 );
 
-// server.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/build/index.html'));
-// });
+server.use(express.static(path.join(__dirname, 'build')));
+
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 server.get("/test", function(req, res) {
   res.send("This is the Server Page!");
