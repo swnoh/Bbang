@@ -37,7 +37,7 @@ const orderSchema = mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);
 
-server.use("*", cors({ origin: "https://protected-caverns-93659.herokuapp.com" }));
+server.use("*", cors({ origin: "http://localhost:3000" }));
 server.use(
   "/graphql",
   bodyParser.json(),
