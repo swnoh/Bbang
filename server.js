@@ -52,7 +52,7 @@ server.use(
 );
 
 server.get("/", function(req, res) {
-  res.send("This is the Welcome Page!");
+  res.send("This is the Server Page!");
 });
 
 server.listen(PORT, () =>
