@@ -12,7 +12,7 @@
 
 ## Splash Preview
 
-<img src="https://www.dropbox.com/home/imgResource?preview=miruku-homepage.png" />
+<img src="https://www.dropbox.com/s/mmkqzwxpu1tamgr/miruku-homepage.png?dl=0" />
 
 ## SETUP:
 
