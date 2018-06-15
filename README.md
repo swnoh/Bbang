@@ -1,10 +1,12 @@
 # Miruku E-commerce store including shopping cart.
 
 * Deployed on Heroku.
-* Backend API = **GraphQL**.
+* Server-side: **Node.js**.
+* Client-side: **React**.
+* Backend API: **GraphQL**.
 * Database utilizes a **MongoDB with mlab** .
 * Client-side API requests are generated from **Apollo Client** wrapped components.
-* The rest of the app sits on **React.js** & **React Router\*(V4)** (with Code splitting).
+* The rest of the app sits on **Bootstrap, HTML5, CSS, React Router\*(V4)**.
 
 ## Site Address
 
