@@ -10,7 +10,6 @@ const path = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
 
-// mongoose.connect("mongodb://localhost/miruku", function(err) {
 mongoose.connect(
   "mongodb://bbang:0320@ds123490.mlab.com:23490/miruku",
   function(err) {
