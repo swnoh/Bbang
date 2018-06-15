@@ -12,7 +12,7 @@
 
 ## Splash Preview
 
-<img src="https://photos-4.dropbox.com/t/2/AAAdH4ePWIKfmNlxJEUTqnw27I58m9T4GfNhpknSDD1YOg/12/19377284/png/32x32/1/_/1/2/miruku-homepage.png/EPOMwA4YqxMgAigC/vNMDKqI88oOfVVBJsOrYfp5fHdL4vagL57SDm_DKdU4?preserve_transparency=1&size=32x32&size_mode=5" />
+<img src="https://www.dropbox.com/s/yahvrdusdjpv6u4/Screenshot%202018-05-23%20at%2014.04.16.jpg?raw=1" />
 
 ## SETUP:
 
