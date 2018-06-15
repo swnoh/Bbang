@@ -42,11 +42,6 @@
   margin-bottom: 50px;
 }
 
-#productCarousel .carousel-inner {
-  border-radius: 40px !important;
-  overflow: hidden;
-}
-
 .product-description {
   letter-spacing: 1px;
   font-family: "Nunito", sans-serif !important;
