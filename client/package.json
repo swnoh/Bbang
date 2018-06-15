@@ -1,7 +1,6 @@
 {
   "name": "react_bbang",
   "version": "1.0.0",
-  "proxy": "http://localhost:5000/",
   "dependencies": {
     "apollo-boost": "^0.1.4",
     "apollo-cache-inmemory": "^1.1.12",
@@ -25,6 +24,7 @@
     "react-router-page-transition": "^3.1.0",
     "react-router-transition": "^1.2.1",
     "react-scripts": "1.1.1",
+    "react-scroll": "^1.7.9",
     "react-toastify": "^4.0.1",
     "react-transition-group": "^2.3.1",
     "reactstrap": "^6.0.1"

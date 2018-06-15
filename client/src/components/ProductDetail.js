@@ -156,44 +156,44 @@ class ProductDetail extends Component {
                   class="carousel slide"
                   data-ride="carousel"
                 >
-                  <div class="carousel-inner">
+                  <div className="carousel-inner">
                     {prod.title.length - 1 > prod.imagePath.length
                       ? prod.imagePath.map((img, index) => {
                           return index === 0 ? (
-                            <div class="item active">
+                            <div className="item active">
                               <img src={img} alt={img} ref={this.imgRef} />
                             </div>
                           ) : (
-                            <div class="item">
+                            <div className="item">
                               <img src={img} alt={img} />
                             </div>
                           );
                         })
                       : prod.imagePath.map((img, index) => {
                           return index === this.state.optionidx ? (
-                            <div class="item active">
+                            <div className="item active">
                               <img src={img} alt={img} ref={this.imgRef} />
                             </div>
                           ) : (
-                            <div class="item">
+                            <div className="item">
                               <img src={img} alt={img} />
                             </div>
                           );
                         })}
                   </div>
                   <a
-                    class="carousel-control left"
+                    className="carousel-control left"
                     href="#productCarousel"
                     data-slide="prev"
                   >
-                    <span class="glyphicon glyphicon-chevron-left" />
+                    <span className="glyphicon glyphicon-chevron-left" />
                   </a>
                   <a
-                    class="carousel-control right"
+                    className="carousel-control right"
                     href="#productCarousel"
                     data-slide="next"
                   >
-                    <span class="glyphicon glyphicon-chevron-right" />
+                    <span claclassNamess="glyphicon glyphicon-chevron-right" />
                   </a>
                 </div>
 
@@ -303,7 +303,7 @@ class ProductDetail extends Component {
                 >
                   {this.state.selectedOption1 && this.state.selectedPrice ? (
                     <i className="fa fa-shopping-cart">
-                      <span id="addCartText">ADD TO SHOPPING CART</span>
+                      <span id="addCartText">ADD TO CART</span>
                     </i>
                   ) : (
                     "Please select an option."

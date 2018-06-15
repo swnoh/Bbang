@@ -71,7 +71,6 @@ class App extends Component {
                 products={this.state.products}
                 showCart={this.state.showCart}
                 CheckoutOpen={this.state.CheckoutOpen}
-                stickyHeader={"sticky"}
                 handleModal={this.handleModal}
                 handleRemoveCart={this.handleRemoveCart}
                 handleInitialCart={this.handleInitialCart}

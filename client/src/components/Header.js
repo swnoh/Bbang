@@ -5,20 +5,6 @@ import PlaceNewOrder from "./PlaceNewOrder";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-//   Nav,
-//   NavLink,
-//   NavItem,
-//   UncontrolledDropdown,
-//   DropdownToggle,
-//   DropdownMenu,
-//   DropdownItem
-// } from "reactstrap";
-// import Scrollspy from "react-scrollspy";
 
 class Header extends Component {
   constructor() {
@@ -31,7 +17,8 @@ class Header extends Component {
       comment: "",
       isSubmitForm: false,
       stickyHeader: "",
-      collapsed: true
+      collapsed: true,
+      headerSticky: ""
     };
   }
 
@@ -82,9 +69,40 @@ class Header extends Component {
     );
   };
 
+  listenScrollEvent = e => {
+    e.preventDefault();
+    if (window.scrollY >= window.innerHeight) {
+      this.setState({
+        headerSticky: "sticky"
+      });
+    } else {
+      this.setState({
+        headerSticky: ""
+      });
+      if (this.props.showCart) {
+        this.props.onCart();
+      }
+    }
+  };
+
+  componentWillUnmount(newProps) {
+    window.removeEventListener("scroll", this.listenScrollEvent);
+  }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.listenScrollEvent);
+  }
+
   render() {
     return (
-      <header className={this.props.stickyHeader}>
+      <header
+        className={
+          window.location.pathname.indexOf("product") > -1
+            ? "sticky"
+            : this.state.headerSticky
+        }
+        onScroll={this.listenScrollEvent}
+      >
         <nav className="navbar navbar-expand-md navbar-dark">
           <button
             className="navbar-toggler"
@@ -96,21 +114,7 @@ class Header extends Component {
           </button>
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav mr-auto header-link">
-              {/* <li>
-                <a href="#home-single-page" id="nav-brand">
-                  Miruku
-                </a>
-              </li> */}
               <NavLink to="/">Miruku</NavLink>
-              {/* <li>
-                <a href="#carousel-home">Home</a>
-              </li>
-              <li>
-                <a href="#content-shop">Shop</a>
-              </li>
-              <li>
-                <a href="#content-intro">About</a>
-              </li> */}
             </ul>
             <ul className="navbar-nav ml-auto" id="header-cart-items">
               <li>

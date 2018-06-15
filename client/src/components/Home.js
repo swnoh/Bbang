@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
 import Intro from "./Intro";
 import ProductsList from "./ProductsList";
+import { animateScroll as scroll, scroller } from "react-scroll";
 
 const CarouselContent = () => {
   return (
@@ -12,7 +12,6 @@ const CarouselContent = () => {
         <h1 className="super-heading">ミルク MIRUKU</h1>
         <br />
         <br />
-        {/* <p className="super-paragraph">FRESH, FROM SCRATCH, ORDERS ONLY </p> */}
         <p className="super-paragraph">Fresh, From Scratch, Orders Only </p>
         <br />
         <ShopLinkButton />
@@ -21,11 +20,20 @@ const CarouselContent = () => {
   );
 };
 
+const ScrollTo = () => {
+  scroller.scrollTo("scrollToShop", {
+    duration: 1000,
+    delay: 50,
+    smooth: "easeInOutQuad",
+    offset: -90
+  });
+};
+
 const ShopLinkButton = () => {
   return (
-    <Link to="/shop">
-      <button className="btn btn-outline-light btn-lg">SHOP</button>
-    </Link>
+    <button onClick={ScrollTo} className="btn btn-outline-light btn-lg">
+      SHOP
+    </button>
   );
 };
 

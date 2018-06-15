@@ -2,7 +2,7 @@ header {
   color: #363636;
   padding-top: 0.9vh;
   padding-bottom: 0.9vh;
-
+  transition-duration: 1s;
   position: fixed;
   display: block;
   width: 100%;
@@ -12,19 +12,16 @@ header {
 
 header.sticky {
   position: fixed;
-  /* transition: all 0.5s ease; */
+  transition: 1s all;
   background-color: rgb(221, 221, 221);
   background: var(--background-header);
   box-shadow: 0 0 7px 0 rgb(43, 43, 43);
 }
 
 .navbar {
-  /* border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px; */
   margin-bottom: 0;
   padding: 0 !important;
   min-height: 50px;
-  /* min-width: 300px; */
   justify-content: flex-start !important;
   padding-left: 20px !important;
 }
