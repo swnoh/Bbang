@@ -37,7 +37,8 @@ const orderSchema = mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);
 
-server.use("*", cors({ origin: "https://mirukufresh.herokuapp.com" }));
+server.use(cors());
+// server.use("*", cors({ origin: "https://mirukufresh.herokuapp.com" }));
 server.use(
   "/graphql",
   bodyParser.json(),

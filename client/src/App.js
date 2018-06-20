@@ -13,8 +13,10 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
+const PORT = process.env.PORT || 5000;
+
 const client = new ApolloClient({
-  link: new HttpLink({ uri: "https://mirukufresh.herokuapp.com/graphql" }),
+  link: new HttpLink({ uri: `http://localhost:${PORT}/graphql` }),
   cache: new InMemoryCache()
 });
 
