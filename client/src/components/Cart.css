@@ -160,8 +160,9 @@
   }
 
   .shopping-cart.showCart {
-    top: 0;
+    top: -10vw;
     height: 100vh;
+    z-index: 10;
     box-shadow: 0 0 5px 0 rgb(43, 43, 43);
   }
 

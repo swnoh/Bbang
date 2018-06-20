@@ -85,6 +85,16 @@ class Header extends Component {
     }
   };
 
+  onCart = () => {
+    this.props.onCart();
+    this.clickClose.click();
+  };
+
+  handleModal = () => {
+    this.props.handleModal();
+    this.clickClose.click();
+  };
+
   componentWillUnmount(newProps) {
     window.removeEventListener("scroll", this.listenScrollEvent);
   }
@@ -97,7 +107,8 @@ class Header extends Component {
     return (
       <header
         className={
-          window.location.pathname.indexOf("product") > -1
+          window.location.pathname.indexOf("product") > -1 ||
+          this.props.showCart
             ? "sticky"
             : this.state.headerSticky
         }
@@ -109,58 +120,29 @@ class Header extends Component {
             type="button"
             data-toggle="collapse"
             data-target="#collapsibleNavbar"
+            ref={button => (this.clickClose = button)}
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="collapsibleNavbar">
+          <div className="navbar-collapse collapse" id="collapsibleNavbar">
             <ul className="navbar-nav mr-auto header-link">
               <NavLink to="/">Miruku</NavLink>
             </ul>
             <ul className="navbar-nav ml-auto" id="header-cart-items">
               <li>
-                <a onClick={this.props.onCart} id="header-cart">
+                <a onClick={this.onCart} id="header-cart">
                   <i className="fa fa-shopping-cart" /> Cart{" "}
                   <span className="badge"> {this.props.products.length} </span>
                 </a>
               </li>
               <li>
-                <a onClick={this.props.handleModal} id="checkout">
+                <a onClick={this.handleModal} id="checkout">
                   Checkout
                 </a>
               </li>
             </ul>
           </div>
         </nav>
-        {/* <Navbar color="faded" dark expand="md">
-          <NavbarBrand href="/">Miruku</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} />
-          <Collapse isOpen={this.state.collapsed} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink href="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#content-shop">Shop</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#content-intro">About</NavLink>
-              </NavItem>
-            </Nav>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink onClick={this.props.onCart} id="header-cart">
-                  <i className="fa fa-shopping-cart" /> Cart{" "}
-                  <span className="badge"> {this.props.products.length} </span>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink onClick={this.props.handleModal} id="checkout">
-                  Checkout
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar> */}
 
         <ModalCheckout
           CheckoutOpen={this.props.CheckoutOpen}

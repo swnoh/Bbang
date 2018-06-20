@@ -123,3 +123,9 @@ h4 {
 .home-social a:hover {
   color: white;
 }
+
+@media screen and (max-width: 767px) {
+  .home-social {
+    left: 40%;
+  }
+}

@@ -61,12 +61,8 @@ header nav li:last-child {
   padding-right: 40%;
 }
 
-/* header nav .social-icon {
-    padding-right: 0;
-} */
-
-.navbar-collapse {
-  top: 20px !important;
+.collapse.in {
+  display: block !important;
 }
 
 #nav-brand {
