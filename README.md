@@ -14,7 +14,7 @@
 
 ## Splash Preview
 
-<img src="https://www.dropbox.com/s/yahvrdusdjpv6u4/Screenshot%202018-05-23%20at%2014.04.16.jpg?raw=1" />
+<img src="https://www.dropbox.com/s/mmkqzwxpu1tamgr/miruku-homepage.png?raw=1" />
 
 ## SETUP:
 
