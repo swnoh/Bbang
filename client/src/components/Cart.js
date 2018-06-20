@@ -49,14 +49,23 @@ class Cart extends Component {
 
   handleTotal() {}
 
+  handleCheckout = () => {
+    this.clickClose.click();
+    this.props.handleOpenModal();
+  };
+
   render() {
     const { showCart, products, handleRemoveCart } = this.props;
     return (
       <div className={showCart ? "shopping-cart showCart" : "shopping-cart"}>
         <div className="shopping-cart-header">
-          {/* <a onClick={this.props.onCart} id="cart-close"><i className="fa fa-angle-double-right" /></a> */}
           <a onClick={this.props.onCart} id="cart-close">
-            <button className="closebtn-cart">&times;</button>
+            <button
+              className="closebtn-cart"
+              ref={button => (this.clickClose = button)}
+            >
+              &times;
+            </button>
           </a>
           <h2>Shopping Cart</h2>
         </div>
@@ -67,7 +76,7 @@ class Cart extends Component {
               <CartTotal products={products} />
               <button
                 className="btn btn-danger btn-block button-checkout"
-                onClick={this.props.handleOpenModal}
+                onClick={this.handleCheckout}
               >
                 Checkout
               </button>
