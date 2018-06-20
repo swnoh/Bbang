@@ -1,6 +1,6 @@
 import { graphqlExpress, graphiqlExpress } from "graphql-server-express";
 import bodyParser from "body-parser";
-// import cors from "cors";
+import cors from "cors";
 import mongoose from "mongoose";
 
 import { schema } from "./data/schema";
@@ -37,7 +37,7 @@ const orderSchema = mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);
 
-// server.use(cors());
+server.use(cors());
 // server.use("*", cors({ origin: "https://mirukufresh.herokuapp.com" }));
 server.use(
   "/graphql",
