@@ -15,13 +15,6 @@ mongoose.connect(url, function(err) {
   if (err) throw err;
   console.log("Successfully connected");
 });
-// mongoose.connect(
-//   "mongodb://bbang:0320@ds123490.mlab.com:23490/miruku",
-//   function(err) {
-//     if (err) throw err;
-//     console.log("Successfully connected");
-//   }
-// );
 
 const productSchema = mongoose.Schema({
   imagePath: Array,
@@ -43,7 +36,7 @@ const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);
 
 server.use(cors());
-// server.use("*", cors({ origin: "https://mirukufresh.herokuapp.com" }));
+
 server.use(
   "/graphql",
   bodyParser.json(),
