@@ -1,6 +1,6 @@
 import { graphqlExpress, graphiqlExpress } from "graphql-server-express";
 import bodyParser from "body-parser";
-import cors from "cors";
+// import cors from "cors";
 import mongoose from "mongoose";
 
 import { schema } from "./data/schema";
@@ -9,14 +9,12 @@ const express = require("express");
 const path = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
+const url = process.env.DATABASEURL;
 
-mongoose.connect(
-  "mongodb://bbang:0320@ds123490.mlab.com:23490/miruku",
-  function(err) {
-    if (err) throw err;
-    console.log("Successfully connected");
-  }
-);
+mongoose.connect(url, function(err) {
+  if (err) throw err;
+  console.log("Successfully connected");
+});
 
 const productSchema = mongoose.Schema({
   imagePath: Array,
@@ -37,7 +35,7 @@ const orderSchema = mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 const Order = mongoose.model("Order", orderSchema);
 
-server.use(cors());
+// server.use(cors());
 // server.use("*", cors({ origin: "https://mirukufresh.herokuapp.com" }));
 server.use(
   "/graphql",
