@@ -23,7 +23,11 @@ header.sticky {
   padding: 0 !important;
   min-height: 50px;
   justify-content: flex-start !important;
-  padding-left: 20px !important;
+}
+
+.navbar-expand-md .navbar-nav {
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 header li {
@@ -58,16 +62,11 @@ header nav li {
 }
 
 header nav li:last-child {
-  padding-right: 40%;
+  padding-right: 100px;
 }
 
 .collapse.in {
   display: block !important;
-}
-
-#nav-brand {
-  font-family: "Lobster" !important;
-  font-size: 20px;
 }
 
 .header-link {
@@ -76,8 +75,26 @@ header nav li:last-child {
   color: rgb(182, 182, 182);
 }
 
+.header-social {
+  color: rgb(182, 182, 182);
+}
+
+.header-social a {
+  padding-left: 30px;
+}
+
+.header-link {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px !important;
+  display: block;
+}
+
 .header-link a {
-  margin: 0 10px;
+  font-size: 30px !important;
+  letter-spacing: 3px;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
 }
 
 #header-cart {
@@ -98,9 +115,9 @@ header nav li:last-child {
   border-radius: 10px;
   color: white;
   display: inline-block;
-  font-size: 12px;
+  font-size: 80% !important;
   line-height: 1;
-  padding: 3px 7px;
+  /* padding: 3px 3px !important; */
   text-align: center;
   vertical-align: middle;
   white-space: nowrap;
@@ -132,7 +149,21 @@ header nav li:last-child {
     margin: 0;
   }
 
+  header nav li:last-child {
+    padding-right: 30px;
+  }
+
+  .header-link a {
+    font-size: 25px !important;
+    letter-spacing: 2px;
+  }
+
   header h2 {
     margin-bottom: 15px;
+  }
+
+  .cartName,
+  #header-checkout {
+    display: none;
   }
 }

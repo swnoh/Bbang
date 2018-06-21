@@ -85,16 +85,6 @@ class Header extends Component {
     }
   };
 
-  onCart = () => {
-    this.props.onCart();
-    this.clickClose.click();
-  };
-
-  handleModal = () => {
-    this.props.handleModal();
-    this.clickClose.click();
-  };
-
   componentWillUnmount(newProps) {
     window.removeEventListener("scroll", this.listenScrollEvent);
   }
@@ -115,32 +105,34 @@ class Header extends Component {
         onScroll={this.listenScrollEvent}
       >
         <nav className="navbar navbar-expand-md navbar-dark">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapsibleNavbar"
-            ref={button => (this.clickClose = button)}
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="navbar-collapse collapse" id="collapsibleNavbar">
-            <ul className="navbar-nav mr-auto header-link">
-              <NavLink to="/">Miruku</NavLink>
-            </ul>
-            <ul className="navbar-nav ml-auto" id="header-cart-items">
-              <li>
-                <a onClick={this.onCart} id="header-cart">
-                  <i className="fa fa-shopping-cart" /> Cart{" "}
-                  <span className="badge"> {this.props.products.length} </span>
-                </a>
-              </li>
-              <li>
-                <a onClick={this.handleModal} id="checkout">
-                  Checkout
-                </a>
-              </li>
-            </ul>
+          <div className="navbar-nav mr-auto header-social">
+            <a
+              href="http://instagram.com/miruku_ottawa"
+              target="_blank"
+              className="fa fa-instagram fa-2x"
+            />
+            <a
+              href="https://www.facebook.com/MirukuOttawa"
+              target="_blank"
+              className="fa fa-facebook-square fa-2x"
+            />
+          </div>
+          <div className="navbar-nav mr-auto header-link">
+            <NavLink to="/">MIRUKU</NavLink>
+          </div>
+          <div className="navbar-nav ml-auto" id="header-cart-items">
+            <li>
+              <a onClick={this.props.onCart} id="header-cart">
+                <i className="fa fa-shopping-cart" />{" "}
+                <span className="cartName">{"Cart "}</span>
+                <span className="badge"> {this.props.products.length} </span>
+              </a>
+            </li>
+            <li>
+              <a onClick={this.props.handleModal} id="header-checkout">
+                Checkout
+              </a>
+            </li>
           </div>
         </nav>
 
