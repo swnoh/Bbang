@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import "./ProductDetail.css";
 import { Redirect } from "react-router-dom";
+import Fade from "react-reveal/Fade";
 
 const productsListQuery = gql`
   query ProductListQuery {
@@ -89,7 +90,6 @@ class ProductDetail extends Component {
 
   handleAddCart = event => {
     event.preventDefault();
-
     let product = {
       id: this.guidGenerator(),
       imagePath: this.imgRef.current.src,
@@ -149,33 +149,28 @@ class ProductDetail extends Component {
               <div className="col-sm-12 col-md-8 col-xl-7">
                 <div
                   id="productCarousel"
-                  class="carousel slide"
+                  className="carousel slide"
                   data-ride="carousel"
                 >
                   <div className="carousel-inner">
-                    {prod.title.length - 1 > prod.imagePath.length
-                      ? prod.imagePath.map((img, index) => {
-                          return index === 0 ? (
-                            <div className="item active">
-                              <img src={img} alt={img} ref={this.imgRef} />
-                            </div>
-                          ) : (
-                            <div className="item">
-                              <img src={img} alt={img} />
-                            </div>
-                          );
-                        })
-                      : prod.imagePath.map((img, index) => {
-                          return index === this.state.optionidx ? (
-                            <div className="item active">
-                              <img src={img} alt={img} ref={this.imgRef} />
-                            </div>
-                          ) : (
-                            <div className="item">
-                              <img src={img} alt={img} />
-                            </div>
-                          );
-                        })}
+                    {prod.imagePath.map((img, index) => {
+                      return (
+                        <div className={`item ${index === 0 ? "active" : ""}`}>
+                          <img
+                            src={img}
+                            alt={img}
+                            ref={
+                              (prod.title.length - 1 > prod.imagePath.length &&
+                                index === 0 &&
+                                this.imgRef) ||
+                              (prod.title.length - 1 <= prod.imagePath.length &&
+                                index === this.state.optionidx &&
+                                this.imgRef)
+                            }
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                   <a
                     className="carousel-control left"
@@ -189,7 +184,7 @@ class ProductDetail extends Component {
                     href="#productCarousel"
                     data-slide="next"
                   >
-                    <span claclassNamess="glyphicon glyphicon-chevron-right" />
+                    <span className="glyphicon glyphicon-chevron-right" />
                   </a>
                 </div>
 
@@ -206,59 +201,65 @@ class ProductDetail extends Component {
                   <h1>{prod.title[0]}</h1>
                   <br />
 
-                  <div
-                    className="btn-group btn-group-toggle row "
-                    data-toggle="buttons"
-                    onClick={this.handleSelectedOption}
-                  >
-                    {prod.title.map(
-                      (title, index) =>
-                        index !== 0 ? (
-                          <label
-                            className="btn btn-outline-info btn-lg product-detail-btn-menu option1"
-                            data-option1={title.split(": ")[0]}
-                            data-price={title.split(": ")[1]}
-                            data-optionidx={index - 1}
-                          >
-                            <input
-                              type={
-                                prod.price[0].indexOf("flavour") > -1
-                                  ? "checkbox"
-                                  : "radio"
-                              }
-                              name="options"
-                              id="option1"
-                              autoComplete="off"
-                            />
-                            {title.split(": ")[0]}
-                          </label>
-                        ) : null
-                    )}
-                  </div>
-                </div>
-                {prod.price[0] !== "" && (
-                  <div className="form-group row">
+                  <Fade bottom>
                     <div
-                      className="btn-group btn-group-toggle row"
+                      className="btn-group btn-group-toggle row "
                       data-toggle="buttons"
                       onClick={this.handleSelectedOption}
                     >
-                      {prod.price.map((price, index) => (
-                        <label
-                          className="btn btn-outline-secondary btn-lg product-detail-btn-menu option2"
-                          data-option2={price.split(": ")[0]}
-                          data-price={price.split(": ")[1]}
-                        >
-                          <input
-                            type="radio"
-                            name="options"
-                            id={"product-option-" + index}
-                            autoComplete="off"
-                          />
-                          {price.split(":")[0]}
-                        </label>
-                      ))}
+                      {prod.title.map(
+                        (title, index) =>
+                          index !== 0 ? (
+                            <label
+                              className="btn btn-outline-info btn-lg product-detail-btn-menu option1"
+                              data-option1={title.split(": ")[0]}
+                              data-price={title.split(": ")[1]}
+                              data-optionidx={index - 1}
+                              data-target="#productCarousel"
+                              data-slide-to={index - 1}
+                            >
+                              <input
+                                type={
+                                  prod.price[0].indexOf("flavour") > -1
+                                    ? "checkbox"
+                                    : "radio"
+                                }
+                                name="options"
+                                id="option1"
+                                autoComplete="off"
+                              />
+                              {title.split(": ")[0]}
+                            </label>
+                          ) : null
+                      )}
                     </div>
+                  </Fade>
+                </div>
+                {prod.price[0] !== "" && (
+                  <div className="form-group row">
+                    <Fade bottom>
+                      <div
+                        className="btn-group btn-group-toggle row"
+                        data-toggle="buttons"
+                        onClick={this.handleSelectedOption}
+                      >
+                        {prod.price.map((price, index) => (
+                          <label
+                            className="btn btn-outline-secondary btn-lg product-detail-btn-menu option2"
+                            data-option2={price.split(": ")[0]}
+                            data-price={price.split(": ")[1]}
+                          >
+                            <input
+                              type="radio"
+                              name="options"
+                              id={"product-option-" + index}
+                              autoComplete="off"
+                            />
+                            {price.split(":")[0]}
+                          </label>
+                        ))}
+                      </div>
+                    </Fade>
                   </div>
                 )}
 
@@ -287,24 +288,27 @@ class ProductDetail extends Component {
                     )}
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className={
-                    "btn btn-lg btn-block " +
-                    (this.state.selectedOption1 &&
-                      this.state.selectedPrice &&
-                      "showAddCartButton")
-                  }
-                  id="button-add-cart"
-                >
-                  {this.state.selectedOption1 && this.state.selectedPrice ? (
-                    <i className="fa fa-shopping-cart">
-                      <span id="addCartText">ADD TO CART</span>
-                    </i>
-                  ) : (
-                    "Please select an option."
-                  )}
-                </button>
+
+                <Fade bottom>
+                  <button
+                    type="submit"
+                    className={
+                      "btn btn-lg btn-block " +
+                      (this.state.selectedOption1 &&
+                        this.state.selectedPrice &&
+                        "showAddCartButton")
+                    }
+                    id="button-add-cart"
+                  >
+                    {this.state.selectedOption1 && this.state.selectedPrice ? (
+                      <i className="fa fa-shopping-cart">
+                        <span id="addCartText">ADD TO CART</span>
+                      </i>
+                    ) : (
+                      "Please select an option."
+                    )}
+                  </button>
+                </Fade>
               </form>
             </div>
           );

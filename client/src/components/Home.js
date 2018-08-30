@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import "./Home.css";
 import Intro from "./Intro";
 import ProductsList from "./ProductsList";
-import { animateScroll as scroll, scroller } from "react-scroll";
+import { scroller } from "react-scroll";
+import Flip from "react-reveal/Flip";
 
 const CarouselContent = () => {
   return (
     <React.Fragment>
       <Overlay />
       <div className="carousel-caption">
-        <h1 className="super-heading">ミルク MIRUKU</h1>
+        <Flip top cascade>
+          <h1 className="super-heading">ミルク MIRUKU</h1>
+        </Flip>
         <br />
         <br />
         <p className="super-paragraph">Fresh, From Scratch, Orders Only </p>

@@ -71,17 +71,16 @@ class Header extends Component {
 
   listenScrollEvent = e => {
     e.preventDefault();
+    let headerSticky;
     if (window.scrollY >= window.innerHeight) {
-      this.setState({
-        headerSticky: "sticky"
-      });
+      headerSticky = "sticky";
     } else {
+      headerSticky = "";
+    }
+    if (headerSticky !== this.state.headerSticky) {
       this.setState({
-        headerSticky: ""
+        headerSticky: headerSticky
       });
-      if (this.props.showCart) {
-        this.props.onCart();
-      }
     }
   };
 
